@@ -11,12 +11,14 @@ import Foundation
 struct Item: CustomStringConvertible {
     var name: String
     var effect: String
-    var heal: Int
-    var applyBuff: Bool
-    var buff: String
-    var removeDebuff: Bool
-    var debuffOnEnemy: Bool
-    var damage: Int
+    var damageValue: Int = 0
+    var defTargetValue: Int = 0
+    var apTargetValue: Int = 0
+    var healValue: Int = 0
+    var changeStatus: State = .healed
+    var defAlliesValue: Int = 0
+    var apAlliesValue: Int = 0
+    var critAlliesValue: Int = 0
     var quantity: Int
     
     var description: String {

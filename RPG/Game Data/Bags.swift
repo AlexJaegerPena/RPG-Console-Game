@@ -6,3 +6,5 @@
 //
 
 import Foundation
+
+var bagForAll: Bag = Bag(item: [grootsHeilsamen, starlordsMixtape, gamorasRemedy, rocketsBoomBox,])

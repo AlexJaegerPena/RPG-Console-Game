@@ -8,52 +8,77 @@
 import Foundation
 
 
-class Groot: Hero {
+
+// Groot Klasse
+class Support: Hero {
     
-    
-    init() {
-        super.init(
-            xp: 0,
-            lvl: 1,
-            regroup: false,
-            bag: bagForAll,
-            name: "🌵 Groot",
-            hp: 180,
-            ap: 40,
-            crit: 5,
-            def: 15,
-            skill: [grootLifeBloom, grootRootSlam, grootWeAreGroot],
-            state: .healthy
-        )
+    override var state: State {
+        didSet {
+            if oldValue != state {
+                print("\(name) ist \(state.rawValue)")
+            }
+            if oldValue == .dead {
+                rocket.isGrootDead()
+            }
+            
+        }
     }
+    
+    override init(xp: Int, lvl: Int, regroup: Bool, bag: Bag, name: String, hp: Int, ap: Int, crit: Int, def: Int, skill: [Skill], state: State, action: [() -> Void]) {
+        super.init(xp: xp, lvl: lvl, regroup: regroup, bag: bag, name: name, hp: hp, ap: ap, crit: crit, def: def, skill: skill, state: state, action: action)
+        self.skill = [grootLifeBloom, grootRootSlam, grootWeAreGroot]
+        self.action = [lifeBloom, rootSlam, weAreGroot]
+    }
+    
+    
+    
     
     func lifeBloom() {
         print("\(name) wirkt \(skill[0].name). \(skill[0].effect)")
         for hero in heroesArray {
-            hero.hp += 50
-            hero.def += 10
+            hero.hp += grootLifeBloom.healValue
+            hero.def += grootLifeBloom.defAlliesValue
         }
     }
     
     func rootSlam() {
         print("\(name) greift alle Gegner mit \(skill[1].name) an. \(skill[1].effect)")
         for enemy in enemiesArray {
-            enemy.crit -= 10
-            enemy.state = .stunned
+            var damageDone = grootRootSlam.damageValue * ap - enemy.def
+            if damageDone < enemy.def {
+                damageDone = 1
+            }
+            if damageDone > enemy.hp {
+                enemy.hp = 0
+                print("Der Gegner wurde besiegt.")
+                enemiesArray.removeAll { enemy in
+                    return enemy.hp == 0
+                }
+            } else {
+                enemy.hp -= damageDone
+                enemy.def -= grootRootSlam.defTargetValue
+                enemy.state = .stunned
+            }
         }
         for hero in heroesArray {
-            hero.crit += 5
+            hero.ap += grootRootSlam.apAlliesValue
         }
     }
     
     func weAreGroot() {
         print("\(name) wirkt \(skill[0].name). \(skill[0].effect).")
         print("Groot hat sich selbst geopfert und scheidet aus dem Kampf aus")
+        hp = 0
         state = .dead
+        rocket.isGrootDead()
+        heroesArray.removeAll(where: {$0.name == name})
         for hero in heroesArray {
-            hero.state = .healthy
-            hero.hp += 100
-            hero.def += 20
+            if hero.name == name {
+                continue
+            }
+            hero.state = .healed
+            hero.hp += grootWeAreGroot.healValue
+            hero.def += grootWeAreGroot.defAlliesValue
         }
     }
 }

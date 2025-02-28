@@ -9,3 +9,8 @@ import Foundation
 
 
 var fight = Fight(isRunning: true, round: 1, turn: 1)
+
+
+var game = Game(isRunning: true)
+
+

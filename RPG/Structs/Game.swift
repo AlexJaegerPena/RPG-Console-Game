@@ -10,10 +10,92 @@ import Foundation
 
 struct Game {
     var isRunning: Bool
+
     
-    mutating func gameStart() {
+    mutating func welcome() {
         print(#"""
-                  Willkommen zum rundenbasierten RPG 
+        
+        Irgendwo in der Galaxie .....
+                                     ._                             
+                                      |* ;                       *     
+            .       `*-.      .       |"":                            
+                     \  \             |""                             
+                      .  \            |   :                           
+          *           `   \           |          .                            -
+                       \   \          |    ;               +.         
+                        .   \         |                   *._`-.      .
+             .          `    \        |     :          .-*'  `. `.    
+                        _\    \.__..--**--...L_   _.-*'      .'`*'    
+                       /  `*-._\   -.       .-*"*+._       .'                     *
+                      :        ``*-._*.     \      _J.   .'           
+                  .-*'`*-.       ;     `.    \    /   `.'             
+              .-*'  _.-*'.     .-'       `-.  `-.:   _.'`-.           .
+           +*' _.-*'      `..-'             `*-. `**'      `-.        
+            `*'          .-'      ._            `*-._         `.      
+               [bug]  .-'         `.`-.____..+-**""'         .*"`.    
+                 ._.-'          _.-*'':$$$;._$              /     `.  
+              .-'  `.      _.-*' `*-.__T$P   `"**--..__    :        `.
+        .'..-'       \_.-*'                            `"**--..___.-*'
+        `. `.    _.-*'                       .                         
+          `. `:*'                                                     .
+            `. `.                                                     
+              `*
+        """#)
+        sleep(2)
+        print("Ready?")
+        sleep(1)
+        print("Wir starten in 3...")
+        sleep(1)
+        print("2...")
+        sleep(1)
+        print("1...")
+        sleep(2)
+        print("1...")
+        sleep(1)
+        print("1...")
+        sleep(1)
+        print("1...")
+        sleep(2)
+        print("⌇⌖⌱ Fehler im System ⌇⌽")
+        sleep(2)
+        print("N∑USTåRT ....∫ç@√~åø∑œ∞çµ≈~√∫€¨@åπ•œ‚∞∂ƒµ√ç~")
+        sleep(1)
+        print(".")
+        sleep(1)
+        print("..")
+        sleep(1)
+        print("...")
+        sleep(1)
+        print("....")
+        sleep(2)
+        print(".....")
+        sleep(1)
+        print("ACHTUNG! ⌇√ç⌖ EINDRINGLING ENTDECKT! œ‚∞∂∑œ")
+        sleep(2)
+        print("GUARDIANS, ZIEHT DIE STIEFEL AN – ES WIRD ERNST!")
+        sleep(5)
+        print("""
+        
+            𒆚             𒀭          𒄑𒆛                               𒀭 
+            Die Guardians waren gerade auf dem Weg zu einem wohlverdienten Kurzurlaub
+            auf Knowhere. Rocket wollte sein neuestes Gadget ausprobieren (angeblich
+            explodiert es „nur manchmal“), und Peter hatte sich schon auf Karaoke mit
+            Cosmo vorbereitet. Aber dann... 
+
+            Ein grelles Licht, ein riesiges Schiff und – oh, Überraschung – Thanos
+            steht mitten im Weg! 
+
+            Und nein, er ist nicht hier, um über das Wetter zu reden. Er hat es auf
+            das Universum abgesehen, wieder mal, und natürlich sind nur die Guardians
+            verrückt genug, ihn aufzuhalten.
+
+            Also schnallt euch an und macht euch bereit: Es wird laut, chaotisch und
+            definitiv explosiv!
+                     𒀭                      𒉽                   𒄑𒆛        𒆚    
+        
+        """)
+        sleep(10)
+        print(#"""
         
                ____                     _ _                               
               / ___|_   _  __ _ _ __ __| (_) __ _ _ __  ___               
@@ -39,17 +121,60 @@ struct Game {
         """#)
         sleep(2)
         print("""
-        ··············································································
-        :      𒆚             𒀭          𒄑𒆛                               𒀭     :
-        :  Begib dich mit den Guardians of the Galaxy auf ein chaotisches Abenteuer  :
-        :  voller Kämpfe, Humor und gefährlicher Gegner, um das Universum vor einer  :
-        :  neuen, finsteren Bedrohung zu retten!                       𒀭            :
-        :           𒀭                      𒉽                   𒄑𒆛        𒆚     :
-        ··············································································
-        """)
+    ···············································································
+    :      𒆚             𒀭          𒄑𒆛                               𒀭      :
+    :  Schließe dich den Guardians of the Galaxy an, um Chaos, Explosionen und    :
+    :  einem wütenden Thanos zu trotzen! Gemeinsam kämpft ihr um das Universum –  :
+    :  oder um zu verhindern, dass Rocket etwas Wichtiges in die Luft jagt.       :
+    :           𒀭                      𒉽                   𒄑𒆛        𒆚      :
+    ···············································································
+    """)
+        
+        
         isRunning = true
     }
+
     
-    
+    func gameMenu() {
+        print()
+        sleep(2)
+        print("---------------Spiel-Menü----------------")
+        print("╭──────────────────────────────────────────╮")
+        print("│    Wähle eine der folgenden Optionen:    │")
+        print("╰──────────────────────────────────────────╯")
+        print("""
+              [1] 𒄑𒆛  Kampf beginnen
+              [2] 𒀭𒀭𒀭  Infos über die Guardians of the Galaxy
+              [3] 𒍣𒇻   Items im Rucksack ansehen
+              [4] 𒉽𒉽    Spiel verlassen
+              """)
+        
+        
+        let userInput = numberInput()
+        
+        switch userInput {
+        case 1:
+            sleep(2)
+            
+        case 2:
+            print("Infos über die Guardians of the Galaxy")
+            guardiansInfo()
+            sleep(2)
+            // Funktion für weitere Infos der Guardians
+            gameMenu()
+        case 3:
+            print("Items im Rucksack ansehen")
+            bagForAll.itemsInBag()
+            sleep(2)
+            // Funktion für weitere Infos der Items oder zurück zum Menü
+            gameMenu()
+        case 4:
+            print("Spiel wird beendet")
+            exit(0)
+        default:
+            print("Fehlerhafte Eingabe. Bitte Option [1] bis [4] wählen")
+            sleep(1)
+        }
+    }
     
 }

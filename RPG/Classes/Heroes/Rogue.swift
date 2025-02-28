@@ -8,43 +8,70 @@
 import Foundation
 
 
-class StarLord: Hero {
+
+// Starlord Klasse
+class Rogue: Hero {
     
-    init() {
-        super.init(
-            xp: 0,
-            lvl: 1,
-            regroup: false,
-            bag: bagForAll,
-            name: "🪐 Starlord",
-            hp: 150,
-            ap: 50,
-            crit: 15,
-            def: 10,
-            skill: [starLordBlaster, starLordDanceOff, gatherPower],
-                state: .healthy 
-            )
+    override init(xp: Int, lvl: Int, regroup: Bool, bag: Bag, name: String, hp: Int, ap: Int, crit: Int, def: Int, skill: [Skill], state: State, action: [() -> Void]) {
+        super.init(xp: xp, lvl: lvl, regroup: regroup, bag: bag, name: name, hp: hp, ap: ap, crit: crit, def: def, skill: skill, state: state, action: action)
+        self.skill = [starLordBlaster, starLordDanceOff]
+        self.action = [blaster, danceOff]
+    }
+    
+    
+    
+    
+    func blaster() {
+        var target: Character = thanos
+        if enemiesArray.count > 1 {
+           print("Welchen Gegner möchtest du angreifen")
+            for (index, enemy) in enemiesArray.enumerated() {
+                print("[\(index + 1)] \(enemy.name)")
+            }
+                    var input = chooseOptionEnemy()
+                target = enemiesArray[input - 1]
         }
-    
-    
-    
-    func blaster(target: Enemy) {
-        target.hp -= 20
+        var damageDone = starLordBlaster.damageValue * ap - target.def
+        print("\(name) greift \(target.name) mit \(skill[0].name) an. \(skill[0].effect) (\(damageDone) Schaden)")
+        if damageDone < target.def {
+            damageDone = 1
+        }
+        if damageDone > target.hp {
+            target.hp = 0
+            print("Der Gegner wurde besiegt.")
+            enemiesArray.removeAll { enemy in
+                return enemy.hp == 0
+            }
+        } else {
+            target.hp -= damageDone
+        }
+        target.def -= starLordBlaster.defTargetValue
 //        var cooldown: Int = 1
 //        var turn: Int
 //        turn += 1
-        print("\(name) greift \(target.name) mit \(skill[0].name) an und verursacht \(skill[0].damageValue) Schaden.")
     }
     
-    func danceOff(target: [Enemy]) {
+    func danceOff() {
+        print("\(name) greift alle Gegner mit \(skill[1].name) an. \(skill[1].effect)")
         for enemy in enemiesArray {
-            hp -= 5
-            ap -= 20
+            var damageDone = starLordDanceOff.damageValue * ap - enemy.def
+            if damageDone < enemy.def {
+                damageDone = 1
+            }
+            if damageDone > enemy.hp {
+                enemy.hp = 0
+                print("Der Gegner wurde besiegt.")
+                enemiesArray.removeAll { enemy in
+                    return enemy.hp == 0
+                }
+            }
+            enemy.hp -= damageDone
+            enemy.ap -= starLordDanceOff.apTargetValue
+            enemy.state = .disoriented
         }
         for hero in heroesArray {
-            ap += 10
+            hero.ap += starLordDanceOff.apAlliesValue
         }
-        print("\(name) greift alle Gegner mit \(skill[1].name) an und verursacht \(skill[1].damageValue) Schaden.")
     }
     
 }
