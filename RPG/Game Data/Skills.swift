@@ -15,7 +15,7 @@ import Foundation
 // --- Starlord ---
 let starLordBlaster: Skill = Skill(
     name: "🔫 Elementar Blaster",
-    info: "Star-Lords charakteristische Waffen, die verschiedene Elementarangriffe auslösen können.",
+    info: "Star-Lords charakteristische Waffen.",
     damageValue: 20,
     defTargetValue: 5,
     effect: "↓ HP und ↓ DEF des Gegners.",
@@ -24,7 +24,7 @@ let starLordBlaster: Skill = Skill(
 
 let starLordDanceOff: Skill = Skill(
     name: "🪩 Dance-Off",
-    info: "Ein überraschend von StarLord eingefordertes Dance Battle, das die Gegner ablenkt und verwirrt.",
+    info: "Ein Dance Battle, das die Gegner ablenkt und verwirrt.",
 //    type: [SkillType.changeAp],
     damageValue: 5,
     apTargetValue: 5,
@@ -127,7 +127,7 @@ let rocketRageOfTheRacoon: Skill = Skill(
 
 let grootLifeBloom: Skill = Skill(
     name: "🪷 Lebensblüte",
-    info: "Groot heilt die Gruppe mit einem massiven Lebensregen, bei dem er seine Wurzeln in den Boden schlägt und die natürliche Heilenergie freisetzt. ",
+    info: "Groot heilt die Gruppe mit einem massiven Lebensregen.",
 //    type: [SkillType.heal],
     healValue: 50,
     defAlliesValue: 10,
@@ -147,9 +147,9 @@ let grootRootSlam: Skill = Skill(
 
 let grootWeAreGroot: Skill = Skill(
     name: "🌳 We Are Groot",
-    info: "Groot opfert sich selbst, um seine tiefe Verbindung zu seinen Freunden zu zeigen. Er heilt alle Mitglieder der Gruppe vollständig und entfernt alle negativen Effekte während er sich selbst für den Rest des Kampfes zurückzieht. Sein Opfer inspiriert die Gruppe, was die Verteidigung und den Angriff erhöht.",
+    info: "Groot opfert sich selbst, um seine tiefe Verbindung zu seinen Freunden zu zeigen. Sein Opfer inspiriert die Gruppe, was die DEF und die AP erhöht.",
 //    type: [SkillType.heal, .buff],
-    healValue: 100,
+    healValue: 1000,
     defAlliesValue: 20,
     effect: "Teammitglieder werden vollständig geheilt. ↑ DEF und ↑ AP der Gruppe.",
     cooldown: 0

@@ -15,9 +15,9 @@ class Enemy: Character {
     
 
     
-    init(loot: Loot? = nil, name: String, hp: Int, ap: Int, crit: Int, def: Int, skill: [Skill], action:[()-> Void]) {
+    init(loot: Loot? = nil, name: String, maxHp: Int, hp: Int, ap: Int, crit: Int, def: Int, skill: [Skill], action:[()-> Void]) {
         self.loot = loot
-        super.init(name: name, hp: hp, ap: ap, crit: crit, def: def, skill: skill, action: action)
+        super.init(name: name, maxHp: maxHp, hp: hp, ap: ap, crit: crit, def: def, skill: skill, action: action)
     }
     
     
@@ -55,4 +55,3 @@ class Enemy: Character {
    
     
 }
-// wie kann ich die skills logisch organisieren? aktuell habe ich alle in einer datei skills, wobei dort sowohl standard als auch spezialangriffe und die angriffe aller charaktere gespeichert sind.

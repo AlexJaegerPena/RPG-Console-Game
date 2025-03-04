@@ -13,11 +13,68 @@ import Foundation
 class Assassin: Hero {
     
     
-    override init(xp: Int, lvl: Int, regroup: Bool, bag: Bag, name: String, hp: Int, ap: Int, crit: Int, def: Int, skill: [Skill], state: State, action: [() -> Void ]) {
-        super.init(xp: xp, lvl: lvl, regroup: regroup, bag: bag, name: name, hp: hp, ap: ap, crit: crit, def: def, skill: skill, state: state, action: action)
+    override init(xp: Int, lvl: Int, regroup: Bool, bag: Bag, name: String, maxHp: Int, hp: Int, ap: Int, crit: Int, def: Int, skill: [Skill], state: State, action: [() -> Void ]) {
+        super.init(xp: xp, lvl: lvl, regroup: regroup, bag: bag, name: name, maxHp: maxHp, hp: hp, ap: ap, crit: crit, def: def, skill: skill, state: state, action: action)
         self.skill = [gamoraKreePoison, gamoraDaughtersFury]
         self.action = [kreePoison, daughtersFury]
     }
+    
+    
+//    func useSkill(index: Int, target: Character?) {
+//        if index < 0 || index >= skill.count {
+//            print("Ungültiger Skill-Index")
+//            return
+//        }
+//        
+//        let selectedSkill = skill[index]
+//        print("\(name) setzt \(skill[0].name) ein. \(skill[0].effect)")
+//        
+//        if let target = target {
+//            var damageDone = selectedSkill.damageValue * ap - target.def
+//            if damageDone < target.def {
+//                damageDone = 1
+//            }
+//            if damageDone >= target.hp {
+//                target.hp = 0
+//                print("\(target.name) wurde besiegt!")
+//                enemiesArray.removeAll { $0.hp == 0 }
+//            } else {
+//                target.hp -= damageDone
+//            }
+//        } else {
+//                print("Kein Ziel ausgewählt.")
+//            }
+//        }
+//    
+//    
+//    func kreePoison() {
+//        let target = chooseTarget()
+//        useSkill(index: 0, target: target)
+//    }
+//    
+//    func daughtersFury() {
+//        print("\(name) greift alle Gegner mit \(skill[1].name) an. \(skill[1].effect)")
+//        for enemy in enemiesArray {
+//            useSkill(index: 1, target: enemy)
+//        }
+//        for hero in heroesArray {
+//            hero.hp += gamoraDaughtersFury.apAlliesValue
+//        }
+//    }
+//    
+//    
+//    func chooseTarget() -> Character? {
+//        if enemiesArray.count == 1 {
+//            return enemiesArray.first
+//        } else {
+//            print("Welchen Gegner möchtest du angreifen")
+//            for (index, enemy) in enemiesArray.enumerated() {
+//                print("[\(index + 1)] \(enemy.name)")
+//            }
+//        var input = chooseOptionEnemy()
+//        return enemiesArray[input - 1]
+//        }
+//    }
     
     
     func kreePoison() {
@@ -46,9 +103,6 @@ class Assassin: Hero {
             target.hp -= damageDone
             target.state = .poisoned
         }
-//        var cooldown: Int = 1
-//       var turn: Int
-//        turn += 1
     }
     
     func daughtersFury() {
@@ -76,11 +130,11 @@ class Assassin: Hero {
     }
     
     
-//    func skills() {
-//        let action: [() -> Void] = [
-//            kreePoison,
-//            daughtersFury
-//        ]
-//    }
+    func skills() {
+        let action: [() -> Void] = [
+            kreePoison,
+            daughtersFury
+        ]
+    }
     
 }

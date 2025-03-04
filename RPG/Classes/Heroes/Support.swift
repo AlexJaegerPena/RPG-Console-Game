@@ -24,8 +24,8 @@ class Support: Hero {
         }
     }
     
-    override init(xp: Int, lvl: Int, regroup: Bool, bag: Bag, name: String, hp: Int, ap: Int, crit: Int, def: Int, skill: [Skill], state: State, action: [() -> Void]) {
-        super.init(xp: xp, lvl: lvl, regroup: regroup, bag: bag, name: name, hp: hp, ap: ap, crit: crit, def: def, skill: skill, state: state, action: action)
+    override init(xp: Int, lvl: Int, regroup: Bool, bag: Bag, name: String, maxHp: Int, hp: Int, ap: Int, crit: Int, def: Int, skill: [Skill], state: State, action: [() -> Void]) {
+        super.init(xp: xp, lvl: lvl, regroup: regroup, bag: bag, name: name, maxHp: maxHp, hp: hp, ap: ap, crit: crit, def: def, skill: skill, state: state, action: action)
         self.skill = [grootLifeBloom, grootRootSlam, grootWeAreGroot]
         self.action = [lifeBloom, rootSlam, weAreGroot]
     }
@@ -66,19 +66,24 @@ class Support: Hero {
     }
     
     func weAreGroot() {
-        print("\(name) wirkt \(skill[0].name). \(skill[0].effect).")
+        print("\(name) wirkt \(skill[0].name). \(skill[0].effect)")
         print("Groot hat sich selbst geopfert und scheidet aus dem Kampf aus")
         hp = 0
         state = .dead
         rocket.isGrootDead()
+        print("\u{001B}93m\(rocket.name) \u{001B}[93m erhält durch Groot's Tod einen neuen Skill\u{001B}[0m")
         heroesArray.removeAll(where: {$0.name == name})
         for hero in heroesArray {
             if hero.name == name {
                 continue
             }
-            hero.state = .healed
-            hero.hp += grootWeAreGroot.healValue
-            hero.def += grootWeAreGroot.defAlliesValue
+            if hero.hp > 0 {
+                hero.state = .healed
+                hero.hp = hero.maxHp
+                hero.def += grootWeAreGroot.defAlliesValue
+            }
+            
         }
+        print("Keine Helden zum Heilen übrig.")
     }
 }

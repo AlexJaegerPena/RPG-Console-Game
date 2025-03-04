@@ -40,7 +40,7 @@ class Bag {
         print("│    🎒  Diese Items sind im Rucksack:     │".bTab())
         print("╰──────────────────────────────────────────╯\u{001B}[0m".bTab())
         print()
-//        print("\u{001B}[33m╭──────────────────────────────────────────────────────────────────────────────────────────────────╮\u{001B}[0m".sTab())
+        //        print("\u{001B}[33m╭──────────────────────────────────────────────────────────────────────────────────────────────────╮\u{001B}[0m".sTab())
         for item in item {
             print("\u{001B}[90m╭──────────────────────────────────────────────────────────────────────────────────────────────────╮\u{001B}[0m".sTab())
             print("  \(item.name) \u{001B}[90m- (\(item.quantity)x)".sTab())
@@ -48,12 +48,13 @@ class Bag {
             print("\u{001B}[90m╰──────────────────────────────────────────────────────────────────────────────────────────────────╯\u{001B}[0m".sTab())
             print()
         }
-//        print("\u{001B}[33m╰──────────────────────────────────────────────────────────────────────────────────────────────────╯\u{001B}[0m".sTab())
+        //        print("\u{001B}[33m╰──────────────────────────────────────────────────────────────────────────────────────────────────╯\u{001B}[0m".sTab())
     }
     
     func stolenBag() {
         if stolen {
             print("Der Rucksack wurde gestohlen und die Helden können keine Items mehr nutzen")
+            stolen = true
         } else if damaged {
             print("Der Rucksack wurde im Kampf beschädigt und es sind Items verloren gegangen.")
             
@@ -81,7 +82,6 @@ class Bag {
         let actualHero = heroesArray[selectedIndex]
         actualHero.hp += 100
         actualHero.state = .healed
-        print("\(grootsHeilsamen.quantity)")
         let newQuantity = changeItemQ(item: grootsHeilsamen)
         grootsHeilsamen = newQuantity
         for (index, item) in itemsArray.enumerated() {
@@ -93,11 +93,10 @@ class Bag {
                 itemAction?.remove(at: index)
             }
         }
-        print(grootsHeilsamen.quantity)
     }
     
     func itemSLM() {
-        print("Die Gruppe gewinnt durch \(starlordsMixtape.name) Angriffsstärke.")
+        print("Die Gruppe gewinnt durch \(starlordsMixtape.name) AP.")
         for hero in heroesArray {
             hero.ap += 30
         }
@@ -112,15 +111,24 @@ class Bag {
                 itemAction?.remove(at: index)
             }
         }
-        print(starlordsMixtape.quantity)
     }
     
-    func itemGR(){
+    func itemGR() {
         print("Alle negativen Effekte der Gruppenmitglieder wurden durch \(gamorasRemedy.name) entfernt")
         for hero in heroesArray {
             hero.state = .normal
         }
-        gamorasRemedy.quantity -= 1
+        let newQuantity = changeItemQ(item: gamorasRemedy)
+        gamorasRemedy = newQuantity
+        for (index, item) in itemsArray.enumerated() {
+            if item.name == newQuantity.name {
+                itemsArray[index] = newQuantity
+            }
+            if item.quantity == 0 {
+                itemsArray.removeAll(where: { $0.quantity == 0} )
+                itemAction?.remove(at: index)
+            }
+        }
     }
     
     func itemRBB() {
@@ -129,7 +137,16 @@ class Bag {
             enemy.hp -= 2
             enemy.state = .disoriented
         }
-        rocketsBoomBox.quantity -= 1
-
+        let newQuantity = changeItemQ(item: rocketsBoomBox)
+        rocketsBoomBox = newQuantity
+        for (index, item) in itemsArray.enumerated() {
+            if item.name == newQuantity.name {
+                itemsArray[index] = newQuantity
+            }
+            if item.quantity == 0 {
+                itemsArray.removeAll(where: { $0.quantity == 0} )
+                itemAction?.remove(at: index)
+            }
+        }
     }
 }

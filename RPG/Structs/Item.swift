@@ -18,7 +18,6 @@ struct Item: CustomStringConvertible {
     var changeStatus: State = .healed
     var defAlliesValue: Int = 0
     var apAlliesValue: Int = 0
-    var critAlliesValue: Int = 0
     var quantity: Int
     var itemAction: [() -> Void]
     

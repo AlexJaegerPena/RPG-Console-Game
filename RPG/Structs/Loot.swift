@@ -12,7 +12,7 @@ struct Loot: CustomStringConvertible {
     var name: String
 //    var description: String
     var effect: String
-    var impact: LootEffect
+//    var impact: LootEffect
     var quantity: Int
     
     var description: String {
