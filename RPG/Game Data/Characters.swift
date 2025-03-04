@@ -11,7 +11,7 @@ import Foundation
 // --------- CHARACTERS ---------
 
 // ------ Starlord ------
-var starLord: Rogue = Rogue(
+var starLord: Rogue = Rogue (
     xp: 0,
     lvl: 1,
     regroup: false,
@@ -97,7 +97,7 @@ var heroesArray: [Hero] = [starLord, gamora, drax, rocket, groot]
 
 // Gegner Instanzen
 var thanos: Boss = Boss(
-    name: "☠️ Thanos",
+    name: "☠️  Thanos",
     hp: 10000,
     ap: 80,
     crit: 20,

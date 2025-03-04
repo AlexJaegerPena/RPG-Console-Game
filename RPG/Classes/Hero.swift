@@ -9,6 +9,7 @@ import Foundation
 
 
 class Hero: Character {
+    
 
     var xp: Int = 0
     var lvl: Int = 1
@@ -42,6 +43,8 @@ class Hero: Character {
             Skills: \(skillNames)
             """
     }
+    
+    var selected: Bool = false
     
     init(xp: Int, lvl: Int, regroup: Bool, bag: Bag, name: String, hp: Int, ap: Int, crit: Int, def: Int, skill: [Skill], state: State, action: [() -> Void]) {
         super.init(name: name, hp: hp, ap: ap, crit: crit, def: def, skill: skill, action: action)

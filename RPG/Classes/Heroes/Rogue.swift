@@ -12,6 +12,8 @@ import Foundation
 // Starlord Klasse
 class Rogue: Hero {
     
+
+    
     override init(xp: Int, lvl: Int, regroup: Bool, bag: Bag, name: String, hp: Int, ap: Int, crit: Int, def: Int, skill: [Skill], state: State, action: [() -> Void]) {
         super.init(xp: xp, lvl: lvl, regroup: regroup, bag: bag, name: name, hp: hp, ap: ap, crit: crit, def: def, skill: skill, state: state, action: action)
         self.skill = [starLordBlaster, starLordDanceOff]
@@ -32,7 +34,7 @@ class Rogue: Hero {
                 target = enemiesArray[input - 1]
         }
         var damageDone = starLordBlaster.damageValue * ap - target.def
-        print("\(name) greift \(target.name) mit \(skill[0].name) an. \(skill[0].effect) (\(damageDone) Schaden)")
+        print("\(self.name) greift \(target.name) mit \(skill[0].name) an. \(skill[0].effect) (\(damageDone) Schaden)")
         if damageDone < target.def {
             damageDone = 1
         }
@@ -52,7 +54,7 @@ class Rogue: Hero {
     }
     
     func danceOff() {
-        print("\(name) greift alle Gegner mit \(skill[1].name) an. \(skill[1].effect)")
+        print("\(self.name) greift alle Gegner mit \(skill[1].name) an. \(skill[1].effect)")
         for enemy in enemiesArray {
             var damageDone = starLordDanceOff.damageValue * ap - enemy.def
             if damageDone < enemy.def {

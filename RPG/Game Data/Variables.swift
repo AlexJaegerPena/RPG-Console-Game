@@ -8,7 +8,7 @@
 import Foundation
 
 
-var fight = Fight(isRunning: true, round: 1, turn: 1)
+var fight = Fight(isRunning: true, round: 1, enemiesFighting: enemiesArray, heroesFighting: heroesArray)
 
 
 var game = Game(isRunning: true)

@@ -138,38 +138,52 @@ struct Game {
     func gameMenu() {
         print()
         sleep(2)
-        print("---------------Spiel-Menü----------------")
-        print("╭──────────────────────────────────────────╮")
-        print("│    Wähle eine der folgenden Optionen:    │")
-        print("╰──────────────────────────────────────────╯")
+        print()
+        print()
+        print(#"""
+        
+                 ____        _      _       __  __            _   _ 
+                / ___| _ __ (_) ___| |     |  \/  | ___ _ __ (_) (_)
+                \___ \| '_ \| |/ _ \ |_____| |\/| |/ _ \ '_ \| | | |
+                 ___) | |_) | |  __/ |_____| |  | |  __/ | | | |_| |
+                |____/| .__/|_|\___|_|     |_|  |_|\___|_| |_|\__,_|
+                      |_|                                           
+        """#.bTab())
+        print()
+        print("\u{001B}[35m╭──────────────────────────────────────────╮".bTab())
+        print("│    Wähle eine der folgenden Optionen:    │".bTab())
+        print("╰──────────────────────────────────────────╯\u{001B}[0m".bTab())
         print("""
-              [1] 𒄑𒆛  Kampf beginnen
-              [2] 𒀭𒀭𒀭  Infos über die Guardians of the Galaxy
-              [3] 𒍣𒇻   Items im Rucksack ansehen
-              [4] 𒉽𒉽    Spiel verlassen
-              """)
+              
+              
+              \t[1] Kampf beginnen
+              \t[2] Infos über die Guardians of the Galaxy
+              \t[3] Items im Rucksack ansehen
+              \t[4] Spiel verlassen
+              
+                 
+              """.sTab())
         
-        
-        let userInput = numberInput()
+
+        let userInput = chooseMenuOption()
         
         switch userInput {
         case 1:
             sleep(2)
-            
+            fight.fight()
         case 2:
-            print("Infos über die Guardians of the Galaxy")
             guardiansInfo()
             sleep(2)
             // Funktion für weitere Infos der Guardians
             gameMenu()
         case 3:
-            print("Items im Rucksack ansehen")
             bagForAll.itemsInBag()
             sleep(2)
             // Funktion für weitere Infos der Items oder zurück zum Menü
             gameMenu()
         case 4:
-            print("Spiel wird beendet")
+            print("❌ Spiel wird beendet")
+            print()
             exit(0)
         default:
             print("Fehlerhafte Eingabe. Bitte Option [1] bis [4] wählen")
@@ -177,4 +191,10 @@ struct Game {
         }
     }
     
+    
+    
+    mutating func gameStart() {
+//        welcome()
+        gameMenu()
+    }
 }

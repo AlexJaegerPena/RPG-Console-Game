@@ -12,29 +12,37 @@ import Foundation
 
 var grootsHeilsamen: Item = Item(
     name: "🫘 Groot's Heilsamen",
-    effect: "Diese Samen haben eine heilende Wirkung und stellen die HP eines Helden wieder her",
+    effect: "Diese Samen haben eine heilende Wirkung. ↑ HP eines Helden.",
     healValue: 100,
-    quantity: 3
+    changeStatus: State.healed,
+    quantity: 3,
+    itemAction: []
 )
 
 var starlordsMixtape: Item = Item(
     name: "📼 StarLord's Mix-Tape",
-    effect: "Spielt einen zufälligen Song aus Star-Lords legendärem Mix-Tape und erhöht die Angriffsstärke der Gruppe",
-    critAlliesValue: 30,
-    quantity: 4
+    effect: "Spielt einen zufälligen Song aus Star-Lords legendärem Mix-Tape. ↑ AP der Gruppe.",
+    apAlliesValue: 30,
+    quantity: 4,
+    itemAction: []
 )
 
 var gamorasRemedy: Item = Item(
     name: "🏺 Gamora's Trank",
-    effect: "Entfernt alle negativen Effekte von der Gruppe",
-    changeStatus: State.healed,
-    quantity: 3
+    effect: "Entfernt alle negativen Effekte von der Gruppe.",
+    changeStatus: State.normal,
+    quantity: 3,
+    itemAction: []
 )
 
 var rocketsBoomBox: Item = Item(
     name: "📻 Rocket's Boom Box",
-    effect: "Tragbare Soundbox, die während des Kampfes einen ohrenbetäubenden Bass explodieren lässt. Gegner nehmen Schaden und haben Chance zu paralysieren",
+    effect: "Lässt einen ohrenbetäubenden Bass explodieren. Gegner nehmen Schaden und sind 🌀 verwirrt.",
     damageValue: 10,
-    changeStatus: State.stunned,
-    quantity: 3
+    changeStatus: State.disoriented,
+    quantity: 3,
+    itemAction: []
 )
+
+
+var itemsArray = [grootsHeilsamen, starlordsMixtape, gamorasRemedy, rocketsBoomBox]

@@ -10,20 +10,29 @@ import Foundation
 
 class Boss: Enemy {
     
+    var summonFirst = false
+    var summonSecond = false
+    var summonThird = false
+
     override var hp: Int {
+        
         didSet {
-            if hp <= 7500 {
+            if hp <= 7500 && !summonFirst {
+                print("HP von \(name) ist unter 75%")
                 state = .raging
                 summonOpponent()
+                summonFirst = true
             }
             
-            if hp < 5000 {
+            if hp < 5000 && !summonSecond {
                 print("HP von \(name) ist unter 50%")
                 state = .raging
                 summonOpponent()
+                summonSecond = true
             }
-            if hp < 2500 {
+            if hp < 2500 && !summonThird{
                 print("HP von \(name) ist unter 25%")
+                summonThird = true
             }
         }
     }

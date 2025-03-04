@@ -18,7 +18,7 @@ let starLordBlaster: Skill = Skill(
     info: "Star-Lords charakteristische Waffen, die verschiedene Elementarangriffe auslösen können.",
     damageValue: 20,
     defTargetValue: 5,
-    effect: "Verursacht Schaden und ↓ Defensive des Gegners.",
+    effect: "↓ HP und ↓ DEF des Gegners.",
     cooldown: 1
 )
 
@@ -30,7 +30,7 @@ let starLordDanceOff: Skill = Skill(
     apTargetValue: 5,
     apAlliesValue: 5,
     
-    effect: "↓ Angriffskraft des Gegners. ↑ Angriffskraft der Gruppe.",
+    effect: "↓ AP des Gegners. ↑ AP der Gruppe.",
     cooldown: 2
 )
 
@@ -41,7 +41,7 @@ let gamoraKreePoison: Skill = Skill(
     info: "Gamora setzt ihre legendären Klingen ein, die als die tödlichsten Waffen im Universum gelten.",
 //    type: [SkillType.changeHp],
     damageValue: 25,
-    effect: "🧪 vergiftet den Gegner.",
+    effect: "Verletzt Gegner und 🧪 vergiftet ihn.",
     cooldown: 1
 
 )
@@ -52,7 +52,7 @@ let gamoraDaughtersFury: Skill = Skill(
 //    type: [SkillType.changeHp],
     damageValue: 10,
     apAlliesValue: 1,
-    effect: "Der Angriff verletzt mehrere Gegner. ↑ Angriffskraft der Gruppe.",
+    effect: "Der Angriff verletzt mehrere Gegner. ↑ AP der Gruppe.",
     cooldown: 3
 )
 
@@ -60,7 +60,7 @@ let gamoraDaughtersFury: Skill = Skill(
 // --- Drax ---
 // Single target
 let draxTwinBlades: Skill = Skill(
-    name: "⚔️ Doppelklingen",
+    name: "⚔️  Doppelklingen",
     info: "Drax' ikonische Messer, die perfekt für schnelle und tödliche Angriffe sind.",
 //    type: [SkillType.changeHp],
     damageValue: 10,
@@ -71,21 +71,21 @@ let draxTwinBlades: Skill = Skill(
 
 // Area target
 let draxProvocation: Skill = Skill(
-    name: "‼️ Provokation",
+    name: "‼️  Provokation",
     info: "Drax brüllt laut und verringert die Defensive der Gegner und erhöht die Defensive der Gruppe.",
 //    type: [SkillType.rage, .changeDef],
     defTargetValue: 10,
     defAlliesValue: 10,
-    effect: "↓ Defensive des Gegners. ↑ Defensive der Gruppe.",
+    effect: "↓ DEF des Gegners. ↑ DEF der Gruppe.",
     cooldown: 1
 )
 
 // Bonus
 let draxLiteralConfusion: Skill = Skill(
-    name: "🗯️ Buchstäbliche Verwirrung",
-    info: "Drax gibt einen seiner legendären Kommentare von sich, der so absurd ist, dass der Gegner kurzzeitig verwirrt ist",
+    name: "🗯️  Buchstäbliche Verwirrung",
+    info: "Drax gibt einen seiner legendären Kommentare von sich, der so absurd ist, dass der Gegner kurzzeitig verwirrt ist.",
 //    type: [SkillType.debuff],
-    effect: "Der Gegner wird verwirrt 🌀 und greift sich selbst an.",
+    effect: "Gegner wird 🌀 verwirrt, greift möglicherweise sich selbst an.",
     cooldown: 2
 )
 
@@ -97,17 +97,17 @@ let rocketTrapOMatic: Skill = Skill(
     name: "🪤 Trap-O-Matic",
     info: "Rocket wirft eine Falle, die einen Gegner einfängt.",
 //    type: [SkillType.debuff],
-    effect: "Der Gegner ist für eine Runde ⛓️ gefangen und kann nicht angreifen",
+    effect: "Der Gegner ist für eine Runde ⛓️  gefangen und kann nicht angreifen",
     cooldown: 2
 )
 
 //areatarget
 let rocketGadgetGatling: Skill = Skill(
     name: "🧨 Gadget Turm",
-    info: "Ein automatischer Geschützturm, der mit Allerlei von Rocket gefundenem Kram um sich schießt und dabei mehrere Gegner trifft",
+    info: "Ein automatischer Geschützturm, der mit Allerlei von Rocket gefundenem Kram um sich schießt und dabei mehrere Gegner trifft.",
 //    type: [SkillType.damage, .buff],
     damageValue: 5,
-    effect: "Die Gegner werden vom Geschützturm getroffen.",
+    effect: "Ein Geschützturm der alle Gegner trifft.",
     cooldown: 2
 )
 
@@ -118,7 +118,7 @@ let rocketRageOfTheRacoon: Skill = Skill(
 //    type: [SkillType.damage, .buff],
     damageValue: 40,
     apAlliesValue: 1,
-    effect: "Greift alle Gegner gleichzeitig an und verursacht hohen Flächenschaden. ↑ Angriffskraft der Gruppe, da die Entschlossenheit wächst, den Kampf zu gewinnen.",
+    effect: "Greift alle Gegner gleichzeitig an und verursacht hohen Flächenschaden. ↑ AP der Gruppe, da die Entschlossenheit wächst, den Kampf zu gewinnen.",
     cooldown: 4
 )
   
@@ -131,7 +131,7 @@ let grootLifeBloom: Skill = Skill(
 //    type: [SkillType.heal],
     healValue: 50,
     defAlliesValue: 10,
-    effect: "↑ HP und ↑ Defensive aller Gruppenmitglieder.",
+    effect: "↑ HP und ↑ DEF aller Gruppenmitglieder.",
     cooldown: 3
 )
 
@@ -151,7 +151,7 @@ let grootWeAreGroot: Skill = Skill(
 //    type: [SkillType.heal, .buff],
     healValue: 100,
     defAlliesValue: 20,
-    effect: "Alle Teammitglieder werden vollständig geheilt und alle negativen Effekte entfernt. ↑ Defensive und ↑ Angriffspunkte der Gruppe.",
+    effect: "Teammitglieder werden vollständig geheilt. ↑ DEF und ↑ AP der Gruppe.",
     cooldown: 0
 )
 
@@ -176,7 +176,7 @@ let thanosInfinityBeam: Skill = Skill(
     name: "☄️ Infinity Beam",
     info: "Thanos entfesselt die Kraft eines Infinity-Steins, der einem einzelnen Gegner großen Schaden zufügt.",
 //    type: [SkillType.damage],
-    damageValue: 60,
+    damageValue: 300,
     effect: "Verursacht großen Schaden an einem einzelnen Ziel.",
     cooldown: 0
 )
@@ -185,7 +185,7 @@ let thanosInfinityBlast: Skill = Skill(
     name: "💥 Infinity Blast",
     info: "Thanos nutzt die Macht des Infinity Gauntlet, um Flächenschaden an allen Gegnern zu verursachen.",
 //    type: [SkillType.damage, .areaDamage],
-    damageValue: 20,
+    damageValue: 100,
     effect: "Verursacht Flächenschaden an allen Gegnern.",
     cooldown: 0
 )
@@ -201,16 +201,16 @@ let thanosInfinityClone: Skill = Skill(
 
 // --- Space Pirate ---
 let pirateBlasterAttack: Skill = Skill(
-    name: "🔫 Blaster Angriff",
-    info: "Ein gezielter Blaster Schuss, der einen Helden trifft und Schaden zufügt.",
-    damageValue: 30,
+    name: "🦜 Papageien Angriff",
+    info: "Der abgerichtete Papagei führt einen gezielten Schlag gegen ein Ziel aus.",
+    damageValue: 80,
     effect: "Fügt einem Helden Schaden zu."
 )
 
 let pirateFire: Skill = Skill(
     name: "🔥 Flächenfeuer",
     info: "Eine Salve an Feuerprojektilen, die Flächenschaden anrichten.",
-    damageValue: 10,
+    damageValue: 50,
     effect: "Fügt allen Helden Schaden zu."
 )
 

@@ -47,6 +47,7 @@ class Berserker: Hero {
         print("\(name) greift alle Gegner mit \(skill[1].name) an. \(skill[1].effect)")
         for enemy in enemiesArray {
             enemy.def -= draxProvocation.defTargetValue
+            enemy.state = .taunted
         }
         for hero in heroesArray {
             hero.def += draxProvocation.defAlliesValue

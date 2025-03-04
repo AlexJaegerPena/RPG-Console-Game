@@ -28,7 +28,7 @@ struct Skill: CustomStringConvertible {
     
     
     var description: String {
-        var details = "\(name): \(info)\n"
+        var details = "\u{001B}[1m\(name)\u{001B}[0m: \(info)\n"
         // chatGpt genutzt, um Details zu Info mit += je nach Spezifikation hinzuzufügen
         if damageValue > 0 {
             details += "- Schaden: \(damageValue)\n"

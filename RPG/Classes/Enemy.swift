@@ -21,30 +21,37 @@ class Enemy: Character {
     }
     
     
-    func attackRandomTarget() {
-        var randomTarget: Hero = drax
-        if let target = heroesArray.randomElement() {
-            randomTarget = target
-        } else {
-            print("Kein Held zum Angreifen.")
-        }
-        print("\(name) greift \(randomTarget.name) mit \(skill[0].name) an und verursacht \(skill[0].damageValue) Schaden.")
-        randomTarget.hp -= skill[0].damageValue
-      
-    }
-    
-    func attackAll() {
-        print("\(name) greift mit \(skill[1].name) an und \(skill[1].effect)")
-        for hero in heroesArray {
-            hero.hp -= skill[1].damageValue
-        }
-    }
-    
-    
-    
-    func randomAttack() {
- 
-    }
+//    func attackRandomTarget() {
+//        var randomTarget: Hero = drax
+//        if let target = heroesArray.randomElement() {
+//            randomTarget = target
+//        } else {
+//            print("Kein Held zum Angreifen.")
+//        }
+//        print("\(name) greift \(randomTarget.name) mit \(skill[0].name) an und verursacht \(skill[0].damageValue) Schaden.")
+//        randomTarget.hp -= skill[0].damageValue
+//    }
+//    
+//    
+//    func randomAttack(actualEnemy: Enemy) {
+//        let randomNumber = Int.random(
+//            in: 1...actualEnemy.skill.count)
+//        let randomAttack: Skill = actualEnemy.skill[
+//            randomNumber - 1]
+//    }
+//    
+//    func attackAll() {
+//        print("\(name) greift mit \(skill[1].name) an und \(skill[1].effect)")
+//        for hero in heroesArray {
+//            hero.hp -= skill[1].damageValue
+//        }
+//    }
+//    
+//    
+//    
+//    func randomAttack() {
+// 
+//    }
    
     
 }

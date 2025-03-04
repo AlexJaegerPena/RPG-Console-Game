@@ -7,4 +7,4 @@
 
 import Foundation
 
-var bagForAll: Bag = Bag(item: [grootsHeilsamen, starlordsMixtape, gamorasRemedy, rocketsBoomBox,])
+var bagForAll: Bag = Bag(item: [grootsHeilsamen, starlordsMixtape, gamorasRemedy, rocketsBoomBox], stolen: false, damaged: false, itemAction: [])

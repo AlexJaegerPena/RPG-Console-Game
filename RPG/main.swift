@@ -29,10 +29,9 @@ import Foundation
 
 //fight.attack()
 
-fight.test()
+//fight.test()
 
 
-
-
+game.gameStart()
 
 

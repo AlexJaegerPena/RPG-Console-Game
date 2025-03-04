@@ -10,17 +10,22 @@ import Foundation
 
 
     // Superclass
-class Character: CustomStringConvertible {
-    var name: String
+class Character: CustomStringConvertible{
+    @objc dynamic var name: String 
     var hp: Int {
         didSet {
             if oldValue < hp {
                 print("\(name)'s HP ↑ \(hp).")
             } else {
-                print("\(name)'s HP ↓ auf \(hp).")
-            }
-            if oldValue <= 0 {
-                state = .dead
+                if oldValue > ap {
+                    if hp >= 0 {
+                        print("\(name)'s HP ↓ von \(oldValue) auf \(hp).")
+                    } else {
+                        hp = 0
+                        print("\(name)'s HP ↓ von \(oldValue) auf \(hp).")
+                        state = .dead
+                    }
+                }
             }
         }
     }
@@ -29,7 +34,13 @@ class Character: CustomStringConvertible {
             if oldValue < ap {
                 print("\(name)'s AP ↑ von \(oldValue) auf \(ap).")
             } else {
-                print("\(name)'s AP ↓ von \(oldValue) auf \(ap).")
+                if oldValue > ap {
+                    if ap >= 0 {
+                    } else {
+                        ap = 0
+                    }
+                    print("\(name)'s AP ↓ von \(oldValue) auf \(ap).")
+                }
             }
         }
     }
@@ -37,8 +48,14 @@ class Character: CustomStringConvertible {
         didSet {
             if oldValue < crit {
                 print("\(name)'s CRIT ↑ von \(oldValue) auf \(crit).")
-            } else {
-                print("\(name)'s CRIT ↓ von \(oldValue) auf \(crit).")
+            }  else {
+                if oldValue > crit {
+                    if crit >= 0 {
+                    } else {
+                        crit = 0
+                    }
+                    print("\(name)'s CRIT ↓ von \(oldValue) auf \(crit).")
+                }
             }
         }
     }
@@ -47,10 +64,17 @@ class Character: CustomStringConvertible {
             if oldValue < def {
                 print("\(name)'s DEF ↑ von \(oldValue) auf \(def).")
             } else {
-                print("\(name)'s DEF ↓ von \(oldValue) auf \(def).")
+                if oldValue > def {
+                    if def >= 0 {
+                    } else {
+                        def = 0
+                    }
+                    print("\(name)'s DEF ↓ von \(oldValue) auf \(def).")
+                }
             }
         }
     }
+        
     
 //    var buff: Buff = Buff.noBuff
 //    var hasBuff: Bool = false
@@ -70,14 +94,11 @@ class Character: CustomStringConvertible {
     
     
     var description: String {
-        return """
-                \(name)
-                HP: \(hp)
-                AP: \(ap)
-                Defense: \(def)
-                """
+        return "\(name) - \(hp) HP | \(ap) AP | \(def) DEF"
     }
     
+    
+
     init(name: String, hp: Int, ap: Int, crit: Int, def: Int, skill: [Skill], state: State = .normal, action: [() -> Void]) {
         self.name = name
         self.hp = hp

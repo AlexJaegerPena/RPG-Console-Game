@@ -7,11 +7,10 @@
 
 import Foundation
 
-
 struct Fight {
-    var isRunning: Bool     //
-    var round: Int
-    var turn: Int
+    var isRunning: Bool = false
+    var round: Int = 1
+    //    var level: Int
     //    var location: [String]    // Location switch/enum?
     //    var weather: [String]     // Weather switch/enum?
     //    var daytime: Bool
@@ -19,51 +18,55 @@ struct Fight {
     //    var status: String     // Aktueller Status des Kampfes - Beispiel: "Spannend", "Kritisch", "Gewonnen", "Verloren"
     //    var loot: [String]
     var enemy: Boss = thanos
-    
-    
+    var enemiesFighting: [Character]
+    var heroesFighting: [Hero]
+
     mutating func fightStarts(enemy: Boss) {
         isRunning = true
-        print(#"""
-                    ╔══════════════════════════════════════╗
-                    I          DER KAMPF BEGINNT!          I
-                    ╚══════════════════════════════════════╝
-        
-        💬 Starlord: „Okay, Leute, lasst uns episch sein!“ 
-        
-                                                    🗯️ Rocket: „Ich brauche MEHR Waffen!“ 
-        
-                    🗯️ Drax: „Ich bin bereit... für alles!“  
-        
-                                    💬 Gamora: „Ich werde nicht zögern, ihnen die Köpfe zu zeigen.“  
-        
-            💭 Groot: „Ich bin Groot.“
-        
-        """#)
+        print(
+            #"""
+
+            
+                     _  __                      __   _                _             _   
+                    | |/ /__ _ _ __ ___  _ __  / _| | |__   ___  __ _(_)_ __  _ __ | |_ 
+                    | ' // _` | '_ ` _ \| '_ \| |_  | '_ \ / _ \/ _` | | '_ \| '_ \| __|
+                    | . \ (_| | | | | | | |_) |  _| | |_) |  __/ (_| | | | | | | | | |_ 
+                    |_|\_\__,_|_| |_| |_| .__/|_|   |_.__/ \___|\__, |_|_| |_|_| |_|\__|
+                                        |_|                     |___/                   
+
+
+                          💬 Starlord: „Okay, Leute, lasst uns episch sein!“
+                          💬 Gamora: „Ich werde nicht zögern, ihnen die Köpfe zu zeigen.“ 
+                          🗯️ Drax: „Ich bin bereit... für alles!“ 
+                          🗯️ Rocket: „Ich brauche MEHR Waffen!“                                                         
+                          💭 Groot: „Ich bin Groot.“
+                                   
+            """#.sTab())
         print()
-        print("\(enemy.name) fordert die Guardians zum Kampf heraus")
-        print("HP: \(enemy.hp) | AP: \(enemy.ap) | DEF: \(enemy.def)")
+        print("\t\(enemy.name) fordert die Guardians zum Kampf heraus")
+        print("\tHP: \(enemy.hp) | AP: \(enemy.ap) | DEF: \(enemy.def)\u{001B}[0m")
         print()
     }
-    
+
     mutating func nextRound() {
         print("Runde 1")
         round += 1
     }
-    
+
     func heroSelection() {
         print()
         print()
-        print("\t\t╭─────────────────────────╮")
-        print("\t\t│   Wähle einen Helden:   │")
-        print("\t\t╰─────────────────────────╯")
-        
+        print("\u{001B}[95m╭───────────────────────────────────────╮".sTab())
+        print("│           Wähle einen Helden:         │".sTab())
+        print("╰───────────────────────────────────────╯\u{001B}[0m".sTab())
+
         for (index, hero) in heroesArray.enumerated() {
-            print("[\(index + 1)] \(hero.name) - HP: \(hero.hp) | AP: \(hero.ap) | DEF: \(hero.def)")
+            print("\t[\(index + 1)] \(hero.name) - HP: \(hero.hp) | AP: \(hero.ap) | DEF: \(hero.def)\u{001B}[0m")
         }
-        
+        print()
     }
-    
-    
+
+    // Usereingabe Zahl
     func numberInput() -> Int {
         let input: String = readLine()!
         if let number = Int(input) {
@@ -73,96 +76,150 @@ struct Fight {
             return numberInput()
         }
     }
-
-        
-    func chooseOptionHero() -> Int {
-            let a: Int = 1
-            let b: Int = heroesArray.count
-            while true {
-                print("Gib eine Zahl zwischen \(a) und \(b) ein.")
-                let input = numberInput()
-                if input >= a && input <= b {
-                    return input
-                } else {
-                    print("Die Eingabe war nicht korrekt. Versuche es erneut.")
-                }
-            }
-        }
-        
-        
-        func chosenHero() -> Hero {
-            let actualHero = heroesArray[chooseOptionHero() - 1]
-            print()
-            print("\t\t* \(actualHero.name) macht sich bereit. *")
-            print("\t\t╭─────────────────────────╮")
-            print("\t\t│    Wähle einen Skill:   │")
-            print("\t\t╰─────────────────────────╯")
-            for (index, skill) in actualHero.skill.enumerated() {
-                print("[\(index + 1)] \(skill.name) - \(skill.info)")
-            }
-            return actualHero
-        }
     
-    
-    func chooseOption2(actualHero: Hero) {
-            let a: Int = 1
-            let b: Int = actualHero.skill.count
+    // Helden aus Array auswählen
+    func chooseHero() -> Int {
+        let a: Int = 1
+        let b: Int = heroesArray.count
+        while true {
+            print("\u{001B}[95mGib eine Zahl zwischen \(a) und \(b) ein.\u{001B}[0m")
             let input = numberInput()
             if input >= a && input <= b {
-//                sleep(1)
-              var actualSkill = actualHero.action[input - 1]()
+                return input
             } else {
                 print("Die Eingabe war nicht korrekt. Versuche es erneut.")
             }
         }
+    }
     
-//    func chosenSkill(chosenSkill: Skill) -> Skill {
-//
-//        print("\t\t*\(actualHero.name) setzt \(actualSkill.name) ein *")
-//        return actualSkill
-//    }
+    // ausgewählen Helden anzeigen
+    func chosenHero() -> Hero {
+        let selectedIndex = chooseHero() - 1
+        let actualHero = heroesArray[selectedIndex]
+        print()
+        printSkills(hero: actualHero)
+        printItems(hero: actualHero)
+        return actualHero
+    }
+
+    func printSkills(hero: Hero) {
+        print()
+        print("   \u{001B}[0m\(hero.name)\u{001B}[0m macht sich bereit. \u{001B}[35m".bTab())
+        print("╭───────────────────────────────────────╮".bTab())
+        print("│           Wähle eine Aktion:          │".bTab())
+        print("╰───────────────────────────────────────╯\u{001B}[0m".bTab())
+        print()
+        print("\u{001B}[4m\u{001B}[95m✨ Skills:\u{001B}[0m".sTab())
+        for (index, skill) in hero.skill.enumerated() {
+            print("[\(index + 1)] \(skill.name) - \u{001B}[90m\(skill.info)\u{001B}[0m.".sTab())
+        }
+    }
+    
+    func printItems(hero: Hero) {
+        print()
+        print("\t\u{001B}[4m\u{001B}[35m🎒 Items:\u{001B}[0m")
+        for (index, item) in itemsArray.enumerated() {
+            print("\t[\(index + hero.skill.count + 1)] \(item.description)")
+        }
+        print("")
+    }
+
+    func chooseAction(actualHero: Hero) -> Int {
+        let skillsArray = actualHero.action
+        let itemsArray = (bagForAll.itemAction ?? [])
+        let actions = skillsArray + itemsArray
+        let a: Int = 1
+        let b: Int = actions.count
+        while true {
+            print("\u{001B}[95mGib eine Zahl zwischen \(a) und \(b) ein.\u{001B}[0m")
+            let input = numberInput()
+            if input >= a && input <= b {
+                //                sleep(1)
+                actions[input - 1]()
+                return input
+            } else {
+                print("Die Eingabe war nicht korrekt. Versuche es erneut.")
+            }
+        }
+    }
     
     
-    func enemyAttacks() {
-        if enemiesArray.count >= 1 {
-            if let actualEnemy: Character = enemiesArray.randomElement() {
-//                sleep(5)
+
+
+    mutating func enemyAttacks() {
+        if enemiesFighting.count >= 1 {
+            if let actualEnemy: Character = enemiesFighting.randomElement() {
+                //                sleep(5)
                 print()
                 print()
                 print("* Der Gegner ist am Zug *")
-//                sleep(2)
-                
+                print()
+                //                sleep(2)
                 if actualEnemy.state == .normal {
-                    let randomNumber = Int.random(in: 1...actualEnemy.skill.count)
-                    let randomAttack: Skill = actualEnemy.skill[randomNumber - 1]
+                    let randomNumber = Int.random(
+                        in: 1...actualEnemy.skill.count)
+                    let randomAttack: Skill = actualEnemy.skill[
+                        randomNumber - 1]
                     let randomNumber2 = Int.random(in: 1...heroesArray.count)
-                    let randomHero = heroesArray[randomNumber2 - 1]
-                    var damageDone = randomAttack.damageValue * enemy.ap - randomHero.def
+                    let randomHero = heroesFighting[randomNumber2 - 1]
+                    var damageDone =
+                        randomAttack.damageValue * enemy.ap - randomHero.def
                     if damageDone < randomHero.def {
+                        print("\(actualEnemy.name) greift \(randomHero.name) mit \(randomAttack.name) an (\(damageDone) Schaden).")
                         damageDone = 1
                     }
                     if damageDone > randomHero.hp {
+                        print("\(actualEnemy.name) greift \(randomHero.name) mit \(randomAttack.name) an (\(damageDone) Schaden).")
                         randomHero.hp = 0
                         print("Der Held wurde besiegt.")
-                        heroesArray.remove(at: randomNumber)
+                        heroesFighting.removeAll(where: { $0.name == randomHero.name} )
                     }
-                    print("\(actualEnemy.name) greift \(randomHero.name) mit \(randomAttack.name) an (\(damageDone) Schaden).")
+//                    print("\(actualEnemy.name) greift \(randomHero.name) mit \(randomAttack.name) an (\(damageDone) Schaden).")
                     randomHero.hp -= damageDone
                 }
                 
+                if actualEnemy.state == .taunted {
+                    let attack: Skill = actualEnemy.skill[0]
+                    if let index: Int = heroesFighting.firstIndex(where: { $0 is Berserker }) {
+                        let heroTarget = heroesArray[index]
+                        var damageDone = attack.damageValue * enemy.ap - heroTarget.def
+                                                if damageDone < heroTarget.def {
+                                                    print("\(actualEnemy.name) greift \(heroTarget.name) mit \(attack.name) an (\(damageDone) Schaden).")
+                                                    damageDone = 1
+                                                }
+                                                if damageDone > heroTarget.hp {
+                                                    print("\(actualEnemy.name) greift \(heroTarget.name) mit \(attack.name) an (\(damageDone) Schaden).")
+                                                    heroTarget.hp = 0
+                                                    print("Der Held wurde besiegt.")
+                                                    heroesArray.removeAll(where: { $0.name == heroTarget.name} )
+                                                }
+                                                //                    print("\(actualEnemy.name) greift \(randomHero.name) mit \(randomAttack.name) an (\(damageDone) Schaden).")
+                                                heroTarget.hp -= damageDone
+                                                actualEnemy.state = .normal }
+                    } else {
+                        print("Nicht gefunden")
+                    }
+
+
                 if actualEnemy.state == .trapped {
-                    print("Der Gegner ist \(enemy.state.rawValue) und kann in dieser Runde nicht angreifen.")
+                    print(
+                        "Der Gegner ist \(enemy.state.rawValue) und kann in dieser Runde nicht angreifen."
+                    )
                     actualEnemy.state = .normal
-                   
-                } else if actualEnemy.state == .stunned || actualEnemy.state == .disoriented {
-                    print("Der Gegner ist \(actualEnemy.state.rawValue) und greift mit ↓ Stärke an. Möglicherweise greift er auch sich selbst an.")
-                    
-                    
-                    let randomNumber = Int.random(in: 1...actualEnemy.skill.count)
-                    let randomAttack: Skill = actualEnemy.skill[randomNumber - 1]
+
+                }
+                if actualEnemy.state == .stunned || actualEnemy.state == .disoriented {
+                    print(
+                        "Der Gegner ist \(actualEnemy.state.rawValue) und greift mit ↓ Stärke an. Möglicherweise greift er auch sich selbst an."
+                    )
+
+                    let randomNumber = Int.random(
+                        in: 1...actualEnemy.skill.count)
+                    let randomAttack: Skill = actualEnemy.skill[
+                        randomNumber - 1]
                     let randomNumber2 = Int.random(in: 1...heroesArray.count)
-                    let randomHero = heroesArray[randomNumber2 - 1]
-                    
+                    let randomHero = heroesFighting[randomNumber2 - 1]
+
                     let randomInt = Int.random(in: 1...2)
                     let target: Character
                     if randomInt == 1 {
@@ -170,10 +227,9 @@ struct Fight {
                     } else {
                         target = actualEnemy
                     }
-                    
-                    
-                    
-                    var damageDone = randomAttack.damageValue * enemy.ap / 2 - target.def
+
+                    var damageDone =
+                        randomAttack.damageValue * enemy.ap / 2 - target.def
                     if damageDone < target.def {
                         damageDone = 1
                     }
@@ -181,87 +237,110 @@ struct Fight {
                         target.hp = 0
                         if target.name == randomHero.name {
                             print("Der Held wurde besiegt.")
-                            heroesArray.remove(at: randomNumber)
+                            heroesFighting.remove(at: randomNumber)
                         } else {
                             print("\(target.name) hat sich selbst besiegt.")
-                            enemiesArray.removeAll(where: {$0.name == target.name})
+                            enemiesFighting.removeAll(where: {
+                                $0.name == target.name
+                            })
                         }
                     }
-                    print("\(actualEnemy.name) greift \(target.name) mit \(randomAttack.name) an (\(damageDone) Schaden).")
+                    print(
+                        "\(actualEnemy.name) greift \(target.name) mit \(randomAttack.name) an (\(damageDone) Schaden)."
+                    )
                     target.hp -= damageDone
                     actualEnemy.state = .normal
-                }
-                  
-                 else if actualEnemy.state == .poisoned {
-                    print("Der Gegner ist \(actualEnemy.state.rawValue) - ↓  \(gamoraKreePoison.damageValue * 10 - actualEnemy.def) HP. Er greift mit weniger Stärke an.")
-                     
-                     let randomNumber = Int.random(in: 1...actualEnemy.skill.count)
-                     let randomAttack: Skill = actualEnemy.skill[randomNumber - 1]
-                     let randomNumber2 = Int.random(in: 1...heroesArray.count)
-                     let randomHero = heroesArray[randomNumber2 - 1]
-                     var damageDone = randomAttack.damageValue * enemy.ap / 2 - randomHero.def
-                     if damageDone < randomHero.def {
-                         damageDone = 1
-                     }
-                     if damageDone > randomHero.hp {
-                         randomHero.hp = 0
-                         print("Der Held wurde besiegt.")
-                         heroesArray.remove(at: randomNumber)
-                     }
-                     print("\(actualEnemy.name) greift \(randomHero.name) mit \(randomAttack.name) an (\(damageDone) Schaden).")
-                     randomHero.hp -= damageDone
-                     actualEnemy.state = .normal
+                } else if actualEnemy.state == .poisoned {
+                    print(
+                        "Der Gegner ist \(actualEnemy.state.rawValue) - ↓  \(gamoraKreePoison.damageValue * 10 - actualEnemy.def) HP. Er greift mit weniger Stärke an."
+                    )
 
-                   
-                } else if actualEnemy.state == .raging {
-                    print("Der Gegner ist \(actualEnemy.state.rawValue) und greift mit ↑ Stärke an.")
-                    
-                    let randomNumber = Int.random(in: 1...actualEnemy.skill.count)
-                    let randomAttack: Skill = actualEnemy.skill[randomNumber - 1]
+                    let randomNumber = Int.random(
+                        in: 1...actualEnemy.skill.count)
+                    let randomAttack: Skill = actualEnemy.skill[
+                        randomNumber - 1]
                     let randomNumber2 = Int.random(in: 1...heroesArray.count)
-                    let randomHero = heroesArray[randomNumber2 - 1]
-                    var damageDone = randomAttack.damageValue * (enemy.ap + 10) - randomHero.def
+                    let randomHero = heroesFighting[randomNumber2 - 1]
+                    var damageDone =
+                        randomAttack.damageValue * enemy.ap / 2 - randomHero.def
                     if damageDone < randomHero.def {
                         damageDone = 1
                     }
                     if damageDone > randomHero.hp {
                         randomHero.hp = 0
                         print("Der Held wurde besiegt.")
-                        heroesArray.remove(at: randomNumber)
+                        heroesFighting.remove(at: randomNumber - 1)
                     }
-                    print("\(actualEnemy.name) greift \(randomHero.name) mit \(randomAttack.name) an (\(damageDone) Schaden).")
+                    print(
+                        "\(actualEnemy.name) greift \(randomHero.name) mit \(randomAttack.name) an (\(damageDone) Schaden)."
+                    )
                     randomHero.hp -= damageDone
-                  
+                    actualEnemy.state = .normal
+
+                } else if actualEnemy.state == .raging {
+                    print(
+                        "Der Gegner ist \(actualEnemy.state.rawValue) und greift mit ↑ Stärke an."
+                    )
+
+                    let randomNumber = Int.random(
+                        in: 1...actualEnemy.skill.count)
+                    let randomAttack: Skill = actualEnemy.skill[
+                        randomNumber - 1]
+                    let randomNumber2 = Int.random(in: 1...heroesFighting.count)
+                    let randomHero = heroesFighting[randomNumber2 - 1]
+                    var damageDone =
+                        randomAttack.damageValue * (enemy.ap + 10)
+                        - randomHero.def
+                    if damageDone < randomHero.def {
+                        damageDone = 1
+                    }
+                    if damageDone > randomHero.hp {
+                        randomHero.hp = 0
+                        print("Der Held wurde besiegt.")
+                        heroesFighting.remove(at: randomNumber - 1)
+                    }
+                    print(
+                        "\(actualEnemy.name) greift \(randomHero.name) mit \(randomAttack.name) an (\(damageDone) Schaden)."
+                    )
+                    randomHero.hp -= damageDone
+
                 } else if actualEnemy.state == .dead {
-                    print("Der Gegner ist \(actualEnemy.state.rawValue) und kann nicht mehr kämpfen.")
+                    print(
+                        "Der Gegner ist \(actualEnemy.state.rawValue) und kann nicht mehr kämpfen."
+                    )
                 }
             }
-      
         } else {
             print("Alle Gegner wurden besiegt")
         }
-        if enemy.state == .trapped || enemy.state == .stunned {
-        }
-        
     }
-    
 
-        
-    mutating func test() {
-            fightStarts(enemy: thanos)
-//        sleep(2)
-        while thanos.hp > 0 {
+    mutating func fight() {
+        fightStarts(enemy: thanos)
+        //        sleep(2)
+        while !enemiesFighting.isEmpty || !heroesFighting.isEmpty {
             heroSelection()
-//            sleep(2)
-            chooseOption2(actualHero: chosenHero())
-//            sleep(2)
+            //            sleep(2)
+            chooseAction(actualHero: chosenHero())
+
+            //            sleep(2)
             enemyAttacks()
-//            sleep(2)
+            //            sleep(2)
+            endFight()
         }
     }
-        
-    
+
     mutating func endFight() {
         isRunning = false
+        if enemiesFighting.isEmpty {
+            print("Du hast \(enemy.name) besiegt!")
+            print("Du hast gewonnen!")
+        } else {
+            if heroesFighting.isEmpty {
+                print("Du hast verloren!")
+                print("Noch einmal versuchen?")
+                      
+            }
+        }
     }
 }

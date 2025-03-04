@@ -20,11 +20,20 @@ struct Item: CustomStringConvertible {
     var apAlliesValue: Int = 0
     var critAlliesValue: Int = 0
     var quantity: Int
+    var itemAction: [() -> Void]
     
     var description: String {
-        return """
-        Item \(name) hat folgenden Effekt:
-        \(effect)
-        """
+        return "\(name) \u{001B}[90m(\(quantity)\u{001B}[90mx) - \(effect)\u{001B}[0m"
     }
+    
+    mutating func changeQuantity() {
+        self.quantity -= 1
+    }
+}
+
+
+func changeItemQ(item: Item) -> Item {
+    var copy: Item = item
+    copy.quantity -= 1
+    return copy
 }

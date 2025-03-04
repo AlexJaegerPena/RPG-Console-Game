@@ -12,12 +12,28 @@ enum State: String {
     case normal = "kampfbereit"
     case healed = "✨ regeneriert"
     case poisoned = "🧪 vergiftet"
-    case trapped = "⛓️ gefangen"
+    case trapped = "⛓️  gefangen"
     case disoriented = "🌀 verwirrt"
-    case raging = "💢 wütend"
+    case raging = "🔥 wütend"
     case dead = "🪦 ausgeschieden"
     case gathering = "sammelt Kräfte"
     case stunned = "💤 betäubt"
+    case taunted = "💢 verspottet"
+    
+//    func printState() {
+//        switch self {
+//        case .normal:
+//        case .healed:
+//        case .poisoned:
+//        case .trapped:
+//        case .disoriented:
+//        case .raging:
+//        case .dead:
+//        case .gathering:
+//        case .stunned:
+//        case .taunted:
+//        }
+//    }
     
     func getMultiplikator() -> Double {
         switch self {
@@ -39,24 +55,27 @@ enum State: String {
             return 0
         case .stunned:
             return 0
+        case .taunted:
+            return 1
         }
     }
-}
+    }
 
 
-enum Buff {
-    case noBuff
-    case starLordBlaster       // enemy hp -
-    case starLordDanceOff      // enemy ap - / allies crit +
-    case gamoraKreeSlash       // enemy vergiftet
-    case draxProvocation       // drax def +
-    case draxLiteralConfusion  // enemy greift sich selbst an
-    case rocketTrapOMatic      // enemy gefangen
-    case rocketRageOfTheRacoon // rocket ap +
-    case grootLifeBloom        // allies hp + / def +
-    case grootRootSlam         // enemy betäubt / crit -
-    case grootWeAreGroot       // allies hp + / def + / ap +
-    
+
+//enum Buff {
+//    case noBuff
+//    case starLordBlaster       // enemy hp -
+//    case starLordDanceOff      // enemy ap - / allies crit +
+//    case gamoraKreeSlash       // enemy vergiftet
+//    case draxProvocation       // drax def +
+//    case draxLiteralConfusion  // enemy greift sich selbst an
+//    case rocketTrapOMatic      // enemy gefangen
+//    case rocketRageOfTheRacoon // rocket ap +
+//    case grootLifeBloom        // allies hp + / def +
+//    case grootRootSlam         // enemy betäubt / crit -
+//    case grootWeAreGroot       // allies hp + / def + / ap +
+//    
     
     
     //    case thanosRageBuff
@@ -65,4 +84,4 @@ enum Buff {
     //    case thanosDebuffEnemy2
     //    case thanosDebuffArea
     //    case thanosDebuffArea2
-}
+//}
