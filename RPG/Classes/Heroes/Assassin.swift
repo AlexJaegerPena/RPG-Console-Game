@@ -20,71 +20,15 @@ class Assassin: Hero {
     }
     
     
-//    func useSkill(index: Int, target: Character?) {
-//        if index < 0 || index >= skill.count {
-//            print("Ungültiger Skill-Index")
-//            return
-//        }
-//        
-//        let selectedSkill = skill[index]
-//        print("\(name) setzt \(skill[0].name) ein. \(skill[0].effect)")
-//        
-//        if let target = target {
-//            var damageDone = selectedSkill.damageValue * ap - target.def
-//            if damageDone < target.def {
-//                damageDone = 1
-//            }
-//            if damageDone >= target.hp {
-//                target.hp = 0
-//                print("\(target.name) wurde besiegt!")
-//                enemiesArray.removeAll { $0.hp == 0 }
-//            } else {
-//                target.hp -= damageDone
-//            }
-//        } else {
-//                print("Kein Ziel ausgewählt.")
-//            }
-//        }
-//    
-//    
-//    func kreePoison() {
-//        let target = chooseTarget()
-//        useSkill(index: 0, target: target)
-//    }
-//    
-//    func daughtersFury() {
-//        print("\(name) greift alle Gegner mit \(skill[1].name) an. \(skill[1].effect)")
-//        for enemy in enemiesArray {
-//            useSkill(index: 1, target: enemy)
-//        }
-//        for hero in heroesArray {
-//            hero.hp += gamoraDaughtersFury.apAlliesValue
-//        }
-//    }
-//    
-//    
-//    func chooseTarget() -> Character? {
-//        if enemiesArray.count == 1 {
-//            return enemiesArray.first
-//        } else {
-//            print("Welchen Gegner möchtest du angreifen")
-//            for (index, enemy) in enemiesArray.enumerated() {
-//                print("[\(index + 1)] \(enemy.name)")
-//            }
-//        var input = chooseOptionEnemy()
-//        return enemiesArray[input - 1]
-//        }
-//    }
-    
-    
     func kreePoison() {
         var target: Character = thanos
         if enemiesFighting.count > 1 {
-            print("Welchen Gegner möchtest du angreifen".sTab())
+            print("\u{001B}[95mWelchen Gegner möchtest du angreifen\u{001B}[0m".sTab())
+            print()
             for (index, enemy) in enemiesFighting.enumerated() {
-                print("[\(index + 1)] \(enemy.name)")
+                print("[\(index + 1)] \(enemy.name)".sTab())
             }
-                    var input = chooseOptionEnemy()
+            let input = chooseOptionEnemy()
             target = enemiesFighting[input - 1]
         }
         print("")
@@ -126,7 +70,6 @@ class Assassin: Hero {
         for hero in heroesFighting {
             hero.ap += gamoraDaughtersFury.apAlliesValue
         }
-       
     }
     
     
@@ -136,5 +79,4 @@ class Assassin: Hero {
             daughtersFury
         ]
     }
-    
 }

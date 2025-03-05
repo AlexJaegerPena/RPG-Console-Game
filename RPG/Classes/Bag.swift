@@ -132,7 +132,7 @@ class Bag {
     }
     
     func itemRBB() {
-        print("\(rocketsBoomBox) explodiert mit einem ohrenbetäubenden Bass. Gegner werden 🌀 verwirrt.".sTab())
+        print("\(rocketsBoomBox.name) explodiert mit einem ohrenbetäubenden Bass. Gegner werden 🌀 verwirrt.".sTab())
         for enemy in enemiesArray {
             enemy.state = .disoriented
         }

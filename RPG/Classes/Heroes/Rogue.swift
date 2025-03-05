@@ -26,7 +26,8 @@ class Rogue: Hero {
     func blaster() {
         var target: Character = thanos
         if enemiesFighting.count > 1 {
-           print("Welchen Gegner möchtest du angreifen".sTab())
+            print("\u{001B}[95mWelchen Gegner möchtest du angreifen\u{001B}[0m".sTab())
+            print()
             for (index, enemy) in enemiesFighting.enumerated() {
                 print("[\(index + 1)] \(enemy.name)".sTab())
             }
@@ -48,9 +49,6 @@ class Rogue: Hero {
             target.hp -= damageDone
         }
         target.def -= starLordBlaster.defTargetValue
-//        var cooldown: Int = 1
-//        var turn: Int
-//        turn += 1
     }
     
     func danceOff() {
@@ -75,5 +73,4 @@ class Rogue: Hero {
             hero.ap += starLordDanceOff.apAlliesValue
         }
     }
-    
 }

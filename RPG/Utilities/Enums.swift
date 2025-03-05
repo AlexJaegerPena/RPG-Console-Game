@@ -19,8 +19,9 @@ enum State: String {
     case gathering = "sammelt Kräfte"
     case stunned = "💤 betäubt"
     case taunted = "💢 verspottet"
+   
     
-//    func printState() {
+//    func handleState() {
 //        switch self {
 //        case .normal:
 //        case .healed:
@@ -32,33 +33,42 @@ enum State: String {
 //        case .gathering:
 //        case .stunned:
 //        case .taunted:
+//            
 //        }
 //    }
     
-    func getMultiplikator() -> Double {
-        switch self {
-        case .normal:
-            return 1
-        case .healed:
-            return 1.2
-        case .poisoned:
-            return 0.8
-        case .trapped:
-            return 0
-        case .disoriented:
-            return 0.7
-        case .raging:
-            return 2
-        case .dead:
-            return 0
-        case .gathering:
-            return 0
-        case .stunned:
-            return 0
-        case .taunted:
-            return 1
-        }
-    }
+//    func attackVariants() {
+//        switch self {
+//        case .normal:
+//            randomAttack(actualEnemy: actualEnemy)
+//
+//    }
+//    }
+//    
+//    func getMultiplikator() -> Double {
+//        switch self {
+//        case .normal:
+//            return 1
+//        case .healed:
+//            return 1.2
+//        case .poisoned:
+//            return 0.8
+//        case .trapped:
+//            return 0
+//        case .disoriented:
+//            return 0.7
+//        case .raging:
+//            return 2
+//        case .dead:
+//            return 0
+//        case .gathering:
+//            return 0
+//        case .stunned:
+//            return 0
+//        case .taunted:
+//            return 1
+//        }
+//    }
     }
 
 

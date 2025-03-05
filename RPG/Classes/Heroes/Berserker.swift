@@ -21,7 +21,8 @@ class Berserker: Hero {
     func twinBlades() {
         var target: Character = thanos
         if enemiesFighting.count > 1 {
-           print("Welchen Gegner möchtest du angreifen".sTab())
+           print("\u{001B}[95mWelchen Gegner möchtest du angreifen\u{001B}[0m".sTab())
+            print()
             for (index, enemy) in enemiesFighting.enumerated() {
                 print("[\(index + 1)] \(enemy.name)".sTab())
             }
@@ -52,13 +53,13 @@ class Berserker: Hero {
         for hero in heroesFighting {
             hero.def += draxProvocation.defAlliesValue
         }
-        //        turn += 1
     }
     
     func literalConfusion() {
         var target: Character = thanos
         if enemiesFighting.count > 1 {
-           print("Welchen Gegner möchtest du angreifen".sTab())
+            print("\u{001B}[95mWelchen Gegner möchtest du angreifen\u{001B}[0m".sTab())
+            print()
             for (index, enemy) in enemiesFighting.enumerated() {
                 print("[\(index + 1)] \(enemy.name)".sTab())
             }

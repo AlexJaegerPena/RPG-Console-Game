@@ -104,7 +104,7 @@ let rocketTrapOMatic: Skill = Skill(
 //areatarget
 let rocketGadgetGatling: Skill = Skill(
     name: "🧨 Gadget Turm",
-    info: "Ein automatischer Geschützturm, der mit Allerlei von Rocket gefundenem Kram um sich schießt und dabei mehrere Gegner trifft.",
+    info: "Ein automatischer Geschützturm, der mit Allerlei von Rocket gefundenem Kram um sich schießt.",
 //    type: [SkillType.damage, .buff],
     damageValue: 5,
     effect: "Ein Geschützturm der alle Gegner trifft.",
@@ -113,12 +113,12 @@ let rocketGadgetGatling: Skill = Skill(
 
 //bonus
 let rocketRageOfTheRacoon: Skill = Skill(
-    name: "⚡️ Der Zorn des Racoon",
-    info: "Von der Wut und dem Schmerz über Groots Opfer angetrieben, entfesselt Rocket eine unkontrollierte Angriffssalve mit all seinen Waffen. Angriffsstärke der Gruppe wird erhöht.",
+    name: "\u{001B}[92m⚡️ Der Zorn des Racoon\u{001B}[0m",
+    info: "\u{001B}[92mEine unkontrollierte Angriffssalve gegen alle Gegner. AP der Gruppe wird erhöht.\u{001B}[0m",
 //    type: [SkillType.damage, .buff],
     damageValue: 40,
     apAlliesValue: 1,
-    effect: "Greift alle Gegner gleichzeitig an und verursacht hohen Flächenschaden. ↑ AP der Gruppe, da die Entschlossenheit wächst, den Kampf zu gewinnen.",
+    effect: "Verursacht hohen Flächenschaden. ↑ AP der Gruppe, da Entschlossenheit wächst, den Kampf zu gewinnen.",
     cooldown: 4
 )
   
@@ -147,7 +147,7 @@ let grootRootSlam: Skill = Skill(
 
 let grootWeAreGroot: Skill = Skill(
     name: "🌳 We Are Groot",
-    info: "Groot opfert sich selbst, um seine tiefe Verbindung zu seinen Freunden zu zeigen. Sein Opfer inspiriert die Gruppe: ↑ DEF und ↑ AP.",
+    info: "Groot opfert sich selbst, um seine tiefe Verbindung zu seinen Freunden zu zeigen.\nSein Opfer inspiriert die Gruppe: ↑ DEF und ↑ AP.",
 //    type: [SkillType.heal, .buff],
     healValue: 1000,
     defAlliesValue: 20,

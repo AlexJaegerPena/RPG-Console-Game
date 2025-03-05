@@ -17,10 +17,9 @@ class Support: Hero {
             if oldValue != state {
                 print("\(name) ist \(state.rawValue)".sTab())
             }
-            if oldValue == .dead {
-                rocket.isGrootDead()
-            }
-            
+//            if oldValue == .dead {
+//                rocket.isGrootDead()
+//            }
         }
     }
     
@@ -76,11 +75,11 @@ class Support: Hero {
         sleep(2)
         print("\u{001B}[0mGroot hat sich selbst geopfert und scheidet aus dem Kampf aus".sTab())
         hp = 0
-        state = .dead
+//        state = .dead
         rocket.isGrootDead()
         sleep(1)
-        print("\u{001B}[32m\(rocket.name) \u{001B}[92m erhält durch Groot's Tod einen neuen Skill\u{001B}[0m".sTab())
-        heroesFighting.removeAll(where: {$0.name == name})
+        print("\(rocket.name) \u{001B}[92m erhält durch Groot's Tod einen neuen Skill\u{001B}[0m".sTab())
+        heroesFighting.removeAll(where: { $0.name == name })
         for hero in heroesFighting {
             if hero.name == name {
                 continue
@@ -90,8 +89,6 @@ class Support: Hero {
                 hero.hp = hero.maxHp
                 hero.def += grootWeAreGroot.defAlliesValue
             }
-            
         }
-        print("Keine Helden zum Heilen übrig.".sTab())
     }
 }

@@ -20,13 +20,13 @@ class Character: CustomStringConvertible{
                 print("HP bleibt bei \(hp)".sTab())
             }
             if oldValue < hp {
-                print("\(name)'s HP ↑ \(hp).".sTab())
+                print("\(name)'s HP ↑ von \(oldValue) auf \(hp).".sTab())
             } else {
-                if oldValue > ap {
+                if oldValue > hp {
                     if hp >= 0 {
                         print("\(name)'s HP ↓ von \(oldValue) auf \(hp).".sTab())
-                    } else {
-                        hp = 0
+                    }
+                    if hp == 0 {
                         print("\(name)'s HP ↓ von \(oldValue) auf \(hp).".sTab())
                         state = .dead
                     }
