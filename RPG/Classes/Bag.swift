@@ -36,51 +36,51 @@ class Bag {
         sleep(1)
         print()
         print()
-        print("\u{001B}[92m╭──────────────────────────────────────────╮".bTab())
-        print("│    🎒  Diese Items sind im Rucksack:     │".bTab())
-        print("╰──────────────────────────────────────────╯\u{001B}[0m".bTab())
+        print(" \u{001B}[96m╭──────────────────────────────────────────────╮".sTab())
+        print(" │      🎒  Diese Items sind im Rucksack:       │".sTab())
+
+        print("\u{001B}[96m╭╰──────────────────────────────────────────────╯────────────────────────────────────────╮\u{001B}[0m".sTab())
         print()
-        //        print("\u{001B}[33m╭──────────────────────────────────────────────────────────────────────────────────────────────────╮\u{001B}[0m".sTab())
         for item in item {
-            print("\u{001B}[90m╭──────────────────────────────────────────────────────────────────────────────────────────────────╮\u{001B}[0m".sTab())
-            print("  \(item.name) \u{001B}[90m- (\(item.quantity)x)".sTab())
-            print("  \(item.effect)\u{001B}[0m".sTab())
-            print("\u{001B}[90m╰──────────────────────────────────────────────────────────────────────────────────────────────────╯\u{001B}[0m".sTab())
+            print("  \u{001B}[90m╭────────────────────────────────────────────────────────────────────────────────────╮\u{001B}[0m".sTab())
+            print("    \(item.name) \u{001B}[90m- (\(item.quantity)x)".sTab())
+            print("    \(item.effect)\u{001B}[0m".sTab())
+            print("  \u{001B}[90m╰────────────────────────────────────────────────────────────────────────────────────╯\u{001B}[0m".sTab())
             print()
         }
-        //        print("\u{001B}[33m╰──────────────────────────────────────────────────────────────────────────────────────────────────╯\u{001B}[0m".sTab())
+        print("\u{001B}[96m╰────────────────────────────────────────────────────────────────────────────────────────╯\u{001B}[0m".sTab())
     }
     
-    func stolenBag() {
-        if stolen {
-            print("Der Rucksack wurde gestohlen und die Helden können keine Items mehr nutzen")
-            stolen = true
-        } else if damaged {
-            print("Der Rucksack wurde im Kampf beschädigt und es sind Items verloren gegangen.")
-            
-            
-            // TODO: Logik für verloren gegangene Items
-            
-        } else {
-            print("🎒 Diese Items sind im Rucksack:")
-            for (index, item) in item.enumerated() {
-                var i = index
-                i += 1
-                print("[\(i)] \(item) | \(item.quantity) x verfügbar")
-            }
-        }
-    }
+//    func stolenBag() {
+//        if stolen {
+//            print("Der Rucksack wurde gestohlen und die Helden können keine Items mehr nutzen")
+//            stolen = true
+//        } else if damaged {
+//            print("Der Rucksack wurde im Kampf beschädigt und es sind Items verloren gegangen.")
+//            
+//            
+//            // TODO: Logik für verloren gegangene Items
+//            
+//        } else {
+//            print("🎒 Diese Items sind im Rucksack:")
+//            for (index, item) in item.enumerated() {
+//                var i = index
+//                i += 1
+//                print("[\(i)] \(item) | \(item.quantity) x verfügbar")
+//            }
+//        }
+//    }
     
     
     
     func itemGH() {
-        print("Welcher Held soll mit \(grootsHeilsamen.name) geheilt werden?")
+        print("Welcher Held soll mit \(grootsHeilsamen.name) geheilt werden?".sTab())
         for (index, hero) in heroesArray.enumerated() {
-            print("[\(index + 1)] \(hero.name) - HP: \(hero.hp) | AP: \(hero.ap) | DEF: \(hero.def)")
+            print("[\(index + 1)] \(hero.name) - HP: \(hero.hp) | AP: \(hero.ap) | DEF: \(hero.def)".sTab())
         }
         let selectedIndex = chooseHero() - 1
         let actualHero = heroesArray[selectedIndex]
-        actualHero.hp += 100
+        actualHero.hp = actualHero.maxHp
         actualHero.state = .healed
         let newQuantity = changeItemQ(item: grootsHeilsamen)
         grootsHeilsamen = newQuantity
@@ -88,15 +88,15 @@ class Bag {
             if item.name == newQuantity.name {
                 itemsArray[index] = newQuantity
             }
-            if item.quantity == 0 {
+            if grootsHeilsamen.quantity == 0 {
                 itemsArray.removeAll(where: { $0.quantity == 0 })
-                itemAction?.remove(at: index)
+//                itemAction?.remove(at: index)
             }
         }
     }
     
     func itemSLM() {
-        print("Die Gruppe gewinnt durch \(starlordsMixtape.name) AP.")
+        print("Die Gruppe gewinnt durch \(starlordsMixtape.name) AP.".sTab())
         for hero in heroesArray {
             hero.ap += 30
         }
@@ -106,15 +106,15 @@ class Bag {
             if item.name == newQuantity.name {
                 itemsArray[index] = newQuantity
             }
-            if item.quantity == 0 {
+            if starlordsMixtape.quantity == 0 {
                 itemsArray.removeAll(where: { $0.quantity == 0 })
-                itemAction?.remove(at: index)
+//                itemAction?.remove(at: index)
             }
         }
     }
     
     func itemGR() {
-        print("Alle negativen Effekte der Gruppenmitglieder wurden durch \(gamorasRemedy.name) entfernt")
+        print("Alle negativen Effekte der Gruppenmitglieder wurden durch \(gamorasRemedy.name) entfernt".sTab())
         for hero in heroesArray {
             hero.state = .normal
         }
@@ -124,17 +124,16 @@ class Bag {
             if item.name == newQuantity.name {
                 itemsArray[index] = newQuantity
             }
-            if item.quantity == 0 {
+            if gamorasRemedy.quantity == 0 {
                 itemsArray.removeAll(where: { $0.quantity == 0} )
-                itemAction?.remove(at: index)
+//                itemAction?.remove(at: index)
             }
         }
     }
     
     func itemRBB() {
-        print("\(rocketsBoomBox) explodiert mit einem ohrenbetäubenden Bass. Gegner nehmen Schaden und sind 🌀 verwirrt.")
+        print("\(rocketsBoomBox) explodiert mit einem ohrenbetäubenden Bass. Gegner werden 🌀 verwirrt.".sTab())
         for enemy in enemiesArray {
-            enemy.hp -= 2
             enemy.state = .disoriented
         }
         let newQuantity = changeItemQ(item: rocketsBoomBox)
@@ -143,9 +142,9 @@ class Bag {
             if item.name == newQuantity.name {
                 itemsArray[index] = newQuantity
             }
-            if item.quantity == 0 {
+            if rocketsBoomBox.quantity == 0 {
                 itemsArray.removeAll(where: { $0.quantity == 0} )
-                itemAction?.remove(at: index)
+//                itemAction?.remove(at: index)
             }
         }
     }

@@ -26,7 +26,7 @@ extension String {
 extension Hero {
     override var name: String {
         get {
-            return "\u{001B}[1m\(super.name)\u{001B}[0m"
+            return "\u{001B}[1m\u{001B}[94m\(super.name)\u{001B}[0m"
         }
         set {
             super.name = newValue
@@ -38,7 +38,7 @@ extension Hero {
 extension Enemy {
     override var name: String {
         get {
-            return "\u{001B}[91m\u{001B}[1m\(super.name)\u{001B}[0m"
+            return "\u{001B}[33m\u{001B}[1m\(super.name)\u{001B}[0m"
         }
         set {
             super.name = newValue

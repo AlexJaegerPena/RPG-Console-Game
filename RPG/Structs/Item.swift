@@ -25,9 +25,9 @@ struct Item: CustomStringConvertible {
         return "\(name) \u{001B}[90m(\(quantity)\u{001B}[90mx) - \(effect)\u{001B}[0m"
     }
     
-    mutating func changeQuantity() {
-        self.quantity -= 1
-    }
+//    mutating func changeQuantity() {
+//        self.quantity -= 1
+//    }
 }
 
 
@@ -36,3 +36,4 @@ func changeItemQ(item: Item) -> Item {
     copy.quantity -= 1
     return copy
 }
+

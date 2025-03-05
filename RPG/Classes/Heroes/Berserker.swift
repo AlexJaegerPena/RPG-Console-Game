@@ -20,22 +20,22 @@ class Berserker: Hero {
     
     func twinBlades() {
         var target: Character = thanos
-        if enemiesArray.count > 1 {
-           print("Welchen Gegner möchtest du angreifen")
-            for (index, enemy) in enemiesArray.enumerated() {
-                print("[\(index + 1)] \(enemy.name)")
+        if enemiesFighting.count > 1 {
+           print("Welchen Gegner möchtest du angreifen".sTab())
+            for (index, enemy) in enemiesFighting.enumerated() {
+                print("[\(index + 1)] \(enemy.name)".sTab())
             }
-                    var input = chooseOptionEnemy()
-                target = enemiesArray[input - 1]
+                    let input = chooseOptionEnemy()
+                target = enemiesFighting[input - 1]
         }
-        print("\(name) greift \(target.name) mit \(skill[0].name) an. \(skill[0].effect)")
+        print("\(name) greift \(target.name) mit \(skill[0].name) an. \(skill[0].effect)".sTab())
         var damageDone = draxTwinBlades.damageValue * ap - target.def
         if damageDone < target.def {
             damageDone = 1
         }
         if damageDone > target.hp {
             target.hp = 0
-            print("Der Gegner wurde besiegt.")
+            print("Der Gegner wurde besiegt.".sTab())
         } else {
             target.hp -= damageDone
         }
@@ -44,12 +44,12 @@ class Berserker: Hero {
         
         
     func provocation() {
-        print("\(name) greift alle Gegner mit \(skill[1].name) an. \(skill[1].effect)")
-        for enemy in enemiesArray {
+        print("\(name) greift alle Gegner mit \(skill[1].name) an. \(skill[1].effect)".sTab())
+        for enemy in enemiesFighting {
             enemy.def -= draxProvocation.defTargetValue
             enemy.state = .taunted
         }
-        for hero in heroesArray {
+        for hero in heroesFighting {
             hero.def += draxProvocation.defAlliesValue
         }
         //        turn += 1
@@ -57,25 +57,25 @@ class Berserker: Hero {
     
     func literalConfusion() {
         var target: Character = thanos
-        if enemiesArray.count > 1 {
-           print("Welchen Gegner möchtest du angreifen")
-            for (index, enemy) in enemiesArray.enumerated() {
-                print("[\(index + 1)] \(enemy.name)")
+        if enemiesFighting.count > 1 {
+           print("Welchen Gegner möchtest du angreifen".sTab())
+            for (index, enemy) in enemiesFighting.enumerated() {
+                print("[\(index + 1)] \(enemy.name)".sTab())
             }
                     let input = chooseOptionEnemy()
-                target = enemiesArray[input - 1]
+                target = enemiesFighting[input - 1]
         }
-        print("\(name) greift \(target.name) mit \(skill[2].name) an. \(skill[2].effect)")
+        print("\(name) greift \(target.name) mit \(skill[2].name) an. \(skill[2].effect)".sTab())
         let randomComment = Int.random(in: 1...4)
         switch randomComment {
         case 1:
-            print("Drax: \"Warum sollte ich meine Feinde in ein Grab stecken wollen? Sie sind doch schon tot, wenn ich fertig bin!\"")
+            print("Drax: \"Warum sollte ich meine Feinde in ein Grab stecken wollen? Sie sind doch schon tot, wenn ich fertig bin!\"".sTab())
         case 2:
-            print("Drax: \"Ich bewege mich so langsam, dass ich praktisch unsichtbar bin!\"")
+            print("Drax: \"Ich bewege mich so langsam, dass ich praktisch unsichtbar bin!\"".sTab())
         case 3:
-            print("Drax: \"Wenn du nicht willst, dass ich sie ersteche, warum hast du mir dann Messer gegeben?\"")
+            print("Drax: \"Wenn du nicht willst, dass ich sie ersteche, warum hast du mir dann Messer gegeben?\"".sTab())
         case 4:
-            print("Drax: \"Metaphern sind bei mir verschwendet. Sieh den Konsequenzen im wahrsten Sinne des Wortes ins Auge!\"")
+            print("Drax: \"Metaphern sind bei mir verschwendet. Sieh den Konsequenzen im wahrsten Sinne des Wortes ins Auge!\"".sTab())
         default:
             print("Drax sagt nix.")
         }
@@ -85,8 +85,8 @@ class Berserker: Hero {
         }
         if damageDone > target.hp {
             target.hp = 0
-            print("Der Gegner wurde besiegt.")
-            enemiesArray.removeAll { enemy in
+            print("Der Gegner wurde besiegt.".sTab())
+            enemiesFighting.removeAll { enemy in
                 return enemy.hp == 0
             }
         } else {

@@ -25,23 +25,23 @@ class Rogue: Hero {
     
     func blaster() {
         var target: Character = thanos
-        if enemiesArray.count > 1 {
-           print("Welchen Gegner möchtest du angreifen")
-            for (index, enemy) in enemiesArray.enumerated() {
-                print("[\(index + 1)] \(enemy.name)")
+        if enemiesFighting.count > 1 {
+           print("Welchen Gegner möchtest du angreifen".sTab())
+            for (index, enemy) in enemiesFighting.enumerated() {
+                print("[\(index + 1)] \(enemy.name)".sTab())
             }
-                    var input = chooseOptionEnemy()
-                target = enemiesArray[input - 1]
+                    let input = chooseOptionEnemy()
+                target = enemiesFighting[input - 1]
         }
         var damageDone = starLordBlaster.damageValue * ap - target.def
-        print("\(self.name) greift \(target.name) mit \(skill[0].name) an. \(skill[0].effect) (\(damageDone) Schaden)")
+        print("\(self.name) greift \(target.name) mit \(skill[0].name) an. \(skill[0].effect) (\(damageDone) Schaden)".sTab())
         if damageDone < target.def {
             damageDone = 1
         }
         if damageDone > target.hp {
             target.hp = 0
-            print("Der Gegner wurde besiegt.")
-            enemiesArray.removeAll { enemy in
+            print("Der Gegner wurde besiegt.".sTab())
+            enemiesFighting.removeAll { enemy in
                 return enemy.hp == 0
             }
         } else {
@@ -54,16 +54,16 @@ class Rogue: Hero {
     }
     
     func danceOff() {
-        print("\(self.name) greift alle Gegner mit \(skill[1].name) an. \(skill[1].effect)")
-        for enemy in enemiesArray {
+        print("\(self.name) greift alle Gegner mit \(skill[1].name) an. \(skill[1].effect)".sTab())
+        for enemy in enemiesFighting {
             var damageDone = starLordDanceOff.damageValue * ap - enemy.def
             if damageDone < enemy.def {
                 damageDone = 1
             }
             if damageDone > enemy.hp {
                 enemy.hp = 0
-                print("Der Gegner wurde besiegt.")
-                enemiesArray.removeAll { enemy in
+                print("Der Gegner wurde besiegt.".sTab())
+                enemiesFighting.removeAll { enemy in
                     return enemy.hp == 0
                 }
             }
@@ -71,7 +71,7 @@ class Rogue: Hero {
             enemy.ap -= starLordDanceOff.apTargetValue
             enemy.state = .disoriented
         }
-        for hero in heroesArray {
+        for hero in heroesFighting {
             hero.ap += starLordDanceOff.apAlliesValue
         }
     }

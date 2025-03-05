@@ -14,7 +14,7 @@ func numberInput() -> Int {
     if let number = Int(input) {
         return number
     } else {
-        print("Die Eingabe war keine Zahl. Versuche es nochmal!")
+        print("Die Eingabe war keine Zahl. Versuche es nochmal!".sTab())
         return numberInput()
     }
 }
@@ -23,12 +23,12 @@ func chooseMenuOption() -> Int {
     let a: Int = 1
     let b: Int = 4
     while true {
-        print("\u{001B}[35mGib eine Zahl zwischen \(a) und \(b) ein.\u{001B}[0m")
+        print("\u{001B}[35mGib eine Zahl zwischen \(a) und \(b) ein.\u{001B}[0m".sTab())
         let input = numberInput()
         if input >= a && input <= b {
             return input
         } else {
-            print("Die Eingabe war nicht korrekt. Versuche es erneut.")
+            print("Die Eingabe war nicht korrekt. Versuche es erneut.".sTab())
         }
     }
 }
@@ -37,35 +37,37 @@ func chooseMenuOption() -> Int {
 func guardiansInfo() {
     print()
     print()
-    print("\u{001B}[92m╭──────────────────────────────────────────────╮".bTab())
-    print("│    Infos über die Guardians of the Galaxy    │".bTab())
-    print("╰──────────────────────────────────────────────╯\u{001B}[0m".bTab())
-        
+    print("\u{001B}[96m ╭──────────────────────────────────────────────╮".sTab())
+    print(" │    Infos über die Guardians of the Galaxy    │".sTab())
+//    print("╰──────────────────────────────────────────────╯\u{001B}[0m".bTab())
+    print("\u{001B}[96m╭╰──────────────────────────────────────────────╯─────────────────────────────────────────────────╮\u{001B}[0m".sTab())
+    print()
     for hero in heroesArray {
-        print()
-        print("\u{001B}[90m╭─────────────────────────────────────────────────────────────────────────────────────────╮\u{001B}[0m".sTab())
-        print("  \(hero.name) | HP: \(hero.hp) | AP: \(hero.ap) | DEF: \(hero.def)".sTab())
+        print("  \u{001B}[90m╭─────────────────────────────────────────────────────────────────────────────────────────────╮\u{001B}[0m".sTab())
+//        print("\u{001B}[96m╭─────────────────────────────────────────────────────────────────────────────────────────╮\u{001B}[0m".sTab())
+        print("    \(hero.name) | HP: \(hero.hp) | AP: \(hero.ap) | DEF: \(hero.def)".sTab())
         print()
         for skill in hero.skill {
-            print("  \u{001B}[90m\(skill.name) - \(skill.effect)\u{001B}[0m".sTab())
+            print("    \(skill.name) - \u{001B}[90m\(skill.effect)\u{001B}[0m".sTab())
         }
-        print("\u{001B}[90m╰─────────────────────────────────────────────────────────────────────────────────────────╯\u{001B}[0m".sTab())
+        print("  \u{001B}[90m╰─────────────────────────────────────────────────────────────────────────────────────────────╯\u{001B}[0m".sTab())
+        print()
     }
+    print("\u{001B}[96m╰─────────────────────────────────────────────────────────────────────────────────────────────────╯\u{001B}[0m".sTab())
     print()
-         
 }
 
 // Helden aus Array auswählen
 func chooseHero() -> Int {
     let a: Int = 1
-    let b: Int = heroesArray.count
+    let b: Int = heroesFighting.count
     while true {
-        print("\u{001B}[35mGib eine Zahl zwischen \(a) und \(b) ein.\u{001B}[0m")
+        print("\u{001B}[35mGib eine Zahl zwischen \(a) und \(b) ein.\u{001B}[0m".sTab())
         let input = numberInput()
         if input >= a && input <= b {
             return input
         } else {
-            print("Die Eingabe war nicht korrekt. Versuche es erneut.")
+            print("Die Eingabe war nicht korrekt. Versuche es erneut.".sTab())
         }
     }
 }
@@ -73,9 +75,9 @@ func chooseHero() -> Int {
 
 func chooseOptionEnemy() -> Int {
         let a: Int = 1
-        let b: Int = enemiesArray.count
+        let b: Int = enemiesFighting.count
         while true {
-            print("Gib eine Zahl zwischen \(a) und \(b) ein.")
+            print("Gib eine Zahl zwischen \(a) und \(b) ein.".sTab())
             let input = numberInput()
             if input >= a && input <= b {
                 return input

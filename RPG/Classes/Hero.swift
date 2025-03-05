@@ -19,7 +19,7 @@ class Hero: Character, HeroProtocol {
         didSet {
             if oldValue <= 0 {
                 state = .dead
-                heroesArray.removeAll(where: {$0.hp <= 0})
+                heroesFighting.removeAll(where: {$0.hp <= 0})
             }
         }
         

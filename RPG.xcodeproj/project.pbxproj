@@ -19,7 +19,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		FA3DB7242D76E4BC00169668 /* RPG */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = RPG; path = "/Users/alex/Documents/dev/m02/02-abschluss-rpg-AlexJaegerPena/build/Debug/RPG"; sourceTree = "<absolute>"; };
+		FA3DB8CB2D77AABF00169668 /* RPG */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = RPG; path = "/Users/alex/Documents/dev/m02/02-abschluss-rpg-AlexJaegerPena/build/Debug/RPG"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -70,7 +70,7 @@
 			packageProductDependencies = (
 			);
 			productName = RPG;
-			productReference = FA3DB7242D76E4BC00169668 /* RPG */;
+			productReference = FA3DB8CB2D77AABF00169668 /* RPG */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */

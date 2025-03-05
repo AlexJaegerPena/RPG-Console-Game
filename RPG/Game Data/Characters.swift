@@ -19,7 +19,7 @@ var starLord: Rogue = Rogue (
     name: "👨🏽‍🚀 Starlord",
     maxHp: 4000,
     hp: 4000,
-    ap: 50,
+    ap: 100,
     crit: 15,
     def: 20,
     skill: [starLordBlaster, starLordDanceOff, gatherPower],
@@ -97,6 +97,7 @@ var groot: Support = Support(
 
 
 var heroesArray: [Hero] = [starLord, gamora, drax, rocket, groot]
+var heroesFighting = heroesArray
 
 
 
@@ -125,3 +126,4 @@ var spacePirate: Enemy = Enemy(
 
 
 var enemiesArray: [Character] = [thanos]
+var enemiesFighting = enemiesArray

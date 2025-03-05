@@ -15,7 +15,7 @@ import Foundation
 // --- Starlord ---
 let starLordBlaster: Skill = Skill(
     name: "🔫 Elementar Blaster",
-    info: "Star-Lords charakteristische Waffen.",
+    info: "Star-Lord greift einen Gegner an.",
     damageValue: 20,
     defTargetValue: 5,
     effect: "↓ HP und ↓ DEF des Gegners.",
@@ -37,8 +37,8 @@ let starLordDanceOff: Skill = Skill(
 
 // --- Gamora ---
 let gamoraKreePoison: Skill = Skill(
-    name: "🗡️ Kree Gift",
-    info: "Gamora setzt ihre legendären Klingen ein, die als die tödlichsten Waffen im Universum gelten.",
+    name: "🗡️  Kree Gift",
+    info: "Gamora setzt ihre legendären Klingen gegen einen Gegner ein.",
 //    type: [SkillType.changeHp],
     damageValue: 25,
     effect: "Verletzt Gegner und 🧪 vergiftet ihn.",
@@ -47,11 +47,11 @@ let gamoraKreePoison: Skill = Skill(
 )
 
 let gamoraDaughtersFury: Skill = Skill(
-    name: "⛓️‍💥 Daughter's Fury",
-    info: "Ein sehr starker Angriff, bei dem Gamora ihren inneren Zorn entfesselt.",
+    name: "⛓️‍💥  Daughter's Fury",
+    info: "Ein starker Angriff gegen mehrere Gegner, bei dem Gamora ihren inneren Zorn entfesselt.",
 //    type: [SkillType.changeHp],
     damageValue: 10,
-    apAlliesValue: 1,
+    apAlliesValue: 2,
     effect: "Der Angriff verletzt mehrere Gegner. ↑ AP der Gruppe.",
     cooldown: 3
 )
@@ -61,7 +61,7 @@ let gamoraDaughtersFury: Skill = Skill(
 // Single target
 let draxTwinBlades: Skill = Skill(
     name: "⚔️  Doppelklingen",
-    info: "Drax' ikonische Messer, die perfekt für schnelle und tödliche Angriffe sind.",
+    info: "Drax' fügt einem Gegner Schaden zu.",
 //    type: [SkillType.changeHp],
     damageValue: 10,
     apAlliesValue: 1,
@@ -72,7 +72,7 @@ let draxTwinBlades: Skill = Skill(
 // Area target
 let draxProvocation: Skill = Skill(
     name: "‼️  Provokation",
-    info: "Drax brüllt laut und verringert die Defensive der Gegner und erhöht die Defensive der Gruppe.",
+    info: "Drax brüllt laut und verringert die DEF der Gegner und erhöht die DEF der Gruppe.",
 //    type: [SkillType.rage, .changeDef],
     defTargetValue: 10,
     defAlliesValue: 10,
@@ -127,7 +127,7 @@ let rocketRageOfTheRacoon: Skill = Skill(
 
 let grootLifeBloom: Skill = Skill(
     name: "🪷 Lebensblüte",
-    info: "Groot heilt die Gruppe mit einem massiven Lebensregen.",
+    info: "Groot heilt die Gruppe mit einem Lebensregen.",
 //    type: [SkillType.heal],
     healValue: 50,
     defAlliesValue: 10,
@@ -147,7 +147,7 @@ let grootRootSlam: Skill = Skill(
 
 let grootWeAreGroot: Skill = Skill(
     name: "🌳 We Are Groot",
-    info: "Groot opfert sich selbst, um seine tiefe Verbindung zu seinen Freunden zu zeigen. Sein Opfer inspiriert die Gruppe, was die DEF und die AP erhöht.",
+    info: "Groot opfert sich selbst, um seine tiefe Verbindung zu seinen Freunden zu zeigen. Sein Opfer inspiriert die Gruppe: ↑ DEF und ↑ AP.",
 //    type: [SkillType.heal, .buff],
     healValue: 1000,
     defAlliesValue: 20,

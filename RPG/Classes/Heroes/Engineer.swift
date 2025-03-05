@@ -24,31 +24,31 @@ class Engineer: Hero {
     // kann man diesen print auch als Protocol machen?
     func trapOMatic() {
         var target: Character = thanos
-        if enemiesArray.count > 1 {
-           print("Welchen Gegner möchtest du angreifen")
-            for (index, enemy) in enemiesArray.enumerated() {
-                print("[\(index + 1)] \(enemy.name)")
+        if enemiesFighting.count > 1 {
+           print("Welchen Gegner möchtest du angreifen".sTab())
+            for (index, enemy) in enemiesFighting.enumerated() {
+                print("[\(index + 1)] \(enemy.name)".sTab())
             }
                     var input = chooseOptionEnemy()
-                target = enemiesArray[input - 1]
+                target = enemiesFighting[input - 1]
         }
-        print("\(name) greift \(target.name) mit \(skill[0].name) an. \(skill[0].effect)")
+        print("\(name) greift \(target.name) mit \(skill[0].name) an. \(skill[0].effect)".sTab())
         target.state = .trapped
 //        rocketTrapOMatic.cooldown -= 1
 //        turn += 1
     }
     
     func gadgetGatling() {
-        print("\(name) greift alle Gegner mit \(skill[1].name) an. \(skill[1].effect)")
-        for enemy in enemiesArray {
+        print("\(name) greift alle Gegner mit \(skill[1].name) an. \(skill[1].effect)".sTab())
+        for enemy in enemiesFighting {
             var damageDone = rocketGadgetGatling.damageValue * ap - enemy.def
             if damageDone < enemy.def {
                 damageDone = 1
             }
             if damageDone > enemy.hp {
                 enemy.hp = 0
-                print("Der Gegner wurde besiegt.")
-                enemiesArray.removeAll { enemy in
+                print("Der Gegner wurde besiegt.".sTab())
+                enemiesFighting.removeAll { enemy in
                     return enemy.hp == 0
                 }
             } else {
@@ -72,24 +72,24 @@ class Engineer: Hero {
     
     
     func rageOfTheRacoon() {
-        print("\(name) entfesselt von der Wut und dem Schmerz über Groots Opfer \(skill[2].name). \(skill[2].effect)")
-        for enemy in enemiesArray {
+        print("\(name) entfesselt von der Wut und dem Schmerz über Groots Opfer \(skill[2].name). \(skill[2].effect)".sTab())
+        for enemy in enemiesFighting {
             var damageDone = rocketRageOfTheRacoon.damageValue * ap - enemy.hp
             if damageDone < enemy.def {
                 damageDone = 1
             }
             if damageDone > enemy.hp {
                 enemy.hp = 0
-                print("Der Gegner wurde besiegt.")
-                enemiesArray.removeAll { enemy in
+                print("Der Gegner wurde besiegt.".sTab())
+                enemiesFighting.removeAll { enemy in
                     return enemy.hp == 0
                 }
             } else {
                 enemy.hp -= damageDone
             }
         }
-        print("\(name)`s Entschlossenheit spornt die anderen Helden an.")
-        for hero in heroesArray {
+        print("\(name)`s Entschlossenheit spornt die anderen Helden an.".sTab())
+        for hero in heroesFighting {
             hero.ap += rocketRageOfTheRacoon.apAlliesValue
         }
         rageRacoonCounter -= 1
