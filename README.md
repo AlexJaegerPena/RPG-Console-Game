@@ -32,6 +32,9 @@ Viel Spaß beim Abenteuer!
 
 **Hinweis:** Dieses Projekt wurde als Lern- und Übungsprojekt im Rahmen meiner Weiterbildung zur Mobile App Entwicklerin realisiert und dient rein persönlichen Zwecken. Es ist in keiner Weise mit Marvel oder den Guardians of the Galaxy verbunden.
 
+
+© 2025 Alex Jaeger Peña
+
 ---
 
 # 🎮 Guardians-RPG 🇺🇸
@@ -67,3 +70,6 @@ The game was created as part of the Coding Foundations module during my one-year
 Enjoy your adventure!
 
 **Note:** This project was created as a learning and practice project during my professional training as a Mobile App Developer and is intended purely for personal use. It is in no way affiliated with Marvel or the Guardians of the Galaxy.
+
+
+© 2025 Alex Jaeger Peña
