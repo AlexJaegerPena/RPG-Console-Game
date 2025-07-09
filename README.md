@@ -2,11 +2,20 @@
 
 Ein rundenbasiertes Konsolenspiel im Guardians of the Galaxy-Universum
 
+
+<img width="493" alt="Bildschirmfoto 2025-07-09 um 23 58 06" src="https://github.com/user-attachments/assets/0bff62a3-c48a-4837-a2e0-8c6a81cfc575" />
+
+
+
 ## 🌟 Überblick
 
 Dies ist ein rundenbasiertes RPG-Spiel, das in Swift entwickelt wurde und eine dynamische Besetzung von Charakteren sowie strategische Gameplay-Elemente bietet.
 
 Das Spiel entstand im Rahmen des Coding-Foundations-Moduls während meiner einjährigen Ausbildung zur Mobile App Entwicklerin und wurde mit großer Leidenschaft entwickelt. Ich plane, das Spiel in Zukunft zu erweitern, indem ich zusätzliche Zufallsereignisse, weitere Gegner, Story-Elemente, Beute, narrative Ereignisse und eine Gruppenangriffsfunktion für die Guardians hinzufüge.
+
+
+<img width="489" alt="Bildschirmfoto 2025-07-09 um 23 58 33" src="https://github.com/user-attachments/assets/04075017-c18d-41c3-8f1f-3e89315b6f0c" />
+
 
 ## 🛠️ Funktionen
 
@@ -15,6 +24,15 @@ Das Spiel entstand im Rahmen des Coding-Foundations-Moduls während meiner einj�
 * **Spezialfähigkeiten**: Jeder Charakter hat Zugang zu mächtigen Fähigkeiten, die den Kampfverlauf entscheidend beeinflussen können.
 * **Dynamische Ereignisse**: Ereignisse wie das Beschwören neuer Gegner und Spezialbewegungen bringen Unvorhersehbarkeit ins Spiel.
 * **Terminal-Animationen**: Farbige Nachrichten und Animationen sorgen für ein intensiveres Spielerlebnis.
+
+
+
+<img width="895" alt="Bildschirmfoto 2025-07-10 um 00 00 37" src="https://github.com/user-attachments/assets/3fc7d1c9-a910-4131-97d1-c1fb70270f80" />
+
+<img width="780" alt="Bildschirmfoto 2025-07-10 um 00 01 21" src="https://github.com/user-attachments/assets/2dcf4a1f-3c76-440e-a2c8-294eca1e79f5" />
+
+<img width="701" alt="Bildschirmfoto 2025-07-10 um 00 02 17" src="https://github.com/user-attachments/assets/ddc168ea-251d-4813-92b7-b1d63bc4600e" />
+
 
 ## 💻 Anforderungen
 
