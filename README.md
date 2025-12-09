@@ -105,10 +105,3 @@ Enjoy your adventure!
 **Note:** This project was created as a learning and practice project during my professional training as a Mobile App Developer and is intended purely for personal use. It is in no way affiliated with Marvel or the Guardians of the Galaxy.
 
 </details>
-
----
-
-## 📜 Lizenz
-
-Dieses Projekt ist unter der **MIT License** lizenziert.  
-© 2025 Alex Jaeger Peña
