@@ -1,11 +1,15 @@
 # 🎮 Guardians-RPG – Konsolen-RPG
 
+<img width="600" alt="Bildschirmfoto 2025-07-09 um 23 58 06" src="https://github.com/user-attachments/assets/0bff62a3-c48a-4837-a2e0-8c6a81cfc575" />
+
+</br>
+</br>
+
+
 <details>
 <summary>🇩🇪 Deutsch</summary>
 
 Ein rundenbasiertes Konsolenspiel im Guardians of the Galaxy-Universum
-
-<img width="493" alt="Bildschirmfoto 2025-07-09 um 23 58 06" src="https://github.com/user-attachments/assets/0bff62a3-c48a-4837-a2e0-8c6a81cfc575" />
 
 ---
 
@@ -57,8 +61,6 @@ Viel Spaß beim Abenteuer!
 <summary>🇬🇧 English</summary>
 
 Guardians of the Galaxy themed turn-based RPG console game
-
-<img width="493" alt="Screenshot" src="https://github.com/user-attachments/assets/0bff62a3-c48a-4837-a2e0-8c6a81cfc575" />
 
 ---
 
