@@ -2,9 +2,6 @@
 
 <img width="600" alt="Bildschirmfoto 2025-07-09 um 23 58 06" src="https://github.com/user-attachments/assets/0bff62a3-c48a-4837-a2e0-8c6a81cfc575" />
 
-</br>
-
-Guardians of the Galaxy themed turn-based RPG console game
 
 ---
 
@@ -55,3 +52,6 @@ Enjoy your adventure!
 
 **Alexandra Jäger Peña**  
 https://appsbyalex.com
+
+
+[![GitHub Clones](https://img.shields.io/badge/dynamic/json?color=success&label=Clones&query=count&url=https://gist.githubusercontent.com/AlexJaegerPena/c2206bde88da1e695df761b43d5be9cc/raw/clone.json&logo=github)](https://github.com/MShawon/github-clone-count-badge)
